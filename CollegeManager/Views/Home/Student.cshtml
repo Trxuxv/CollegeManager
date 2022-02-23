@@ -1,0 +1,148 @@
+﻿<div class="container" ng-app="teachers" ng-controller="teacherCtrl" style="width: 90%; height: 85rem; background-color: #0d1117; padding:1%; margin-top:  1%;">
+    <div class="panel" style="border: 0.3px solid #8B949E; ">
+        <div class="panel-heading" style="border: none; background: #161b22; color: #C9D1D9;">Students</div>
+        <div class="panel-body" style="background: #0d1117; color: #8B949E;">
+            <button type="button" class="btn btn-info" data-target="#AdicionarFuncionario" data-toggle="modal" style="border-radius: 25px; width: 38px;">
+                <span class="glyphicon glyphicon-plus"></span>
+            </button>
+        </div>
+        <table class="table" style="background: #0d1117; color: #8B949E;border: 0.2px solid #8B949E; ">
+            <thead style="background-color: #161b22; border: none; color: white; ">
+                <tr>
+                    <th class="text-center" style="border-bottom: 0.5px solid #ddd">Teacher Id</th>
+                    <th class="text-center" style="border-bottom: 0.5px solid #ddd">Name</th>
+                    <th class="text-center" style="border-bottom: 0.5px solid #ddd">Birthday</th>
+                    <th class="text-center" style="border-bottom: 0.5px solid #ddd">Salary</th>
+                    <th class="text-center" style="border-bottom: 0.5px solid #ddd">Actions</th>
+                </tr>
+            </thead>
+            <tbody style="background: #0d1117; color: #8B949E;border: 0.2px solid #8B949E; ">
+                <tr ng-repeat="c in Teachers">
+                    <td class="text-center">{{c.TeacherId}}</td>
+                    <td class="text-center">{{c.Name}}</td>
+                    <td class="text-center">{{c.Birthday}}</td>
+                    <td class="text-center">{{c.Salary}}</td>
+                    <td class="text-center" style="width: 200px;">
+                        <a href="#" style="border-radius: 25px;"
+                           data-target="#AtualizarFuncionario"
+                           data-toggle="modal" class="btn btn-success"
+                           ng-click="atualizarFuncionarioPorId(func)">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                        </a>
+                        <a href="#" style="border-radius: 25px;"
+                           data-target="#ExcluirFuncionario"
+                           id="btnExcluir"
+                           data-toggle="modal" class="btn btn-danger"
+                           ng-click="excluirFuncionarioPorId(func)">
+                            <span class="glyphicon glyphicon-trash"></span>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="modal" id="AdicionarFuncionario" role="dialog" style="width: 100%; padding-top: 8rem;">
+            <div class="modal-dialog" style="width: 40%; margin-top: 4%;">
+                <div class="modal-content" style="background: #0d1117;">
+                    <div class="modal-header">
+                        <h3 style="color: #C9D1D9;">New Teacher</h3>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal" name="AdicionarNovoFuncionarioForm">
+                            <div class="form-group" style="width: 100%; background: green;">
+                                <input class="form-control" readonly="readonly" name="funcionarioId" type="hidden" placeholder="Id Funcionário" style="margin: auto; min-width: 300px;" />
+                            </div>
+
+                            <div class="form-group">
+                                <input class="form-control" type="text" name="nome" ng-model="description" placeholder="Description" style="width:100%;" />
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" type="text" name="nome" ng-model="duration" placeholder="Duration" />
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" type="text" name="nome" ng-model="minGrade" placeholder="Min. Grade" />
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer" style="border: none;">
+                        <button type="button" class="btn btn-primary" id="btnSalvar" data-dismiss="modal" ng-click="addCourse()">Confirm</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="limparDados()">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal" id="AtualizarFuncionario" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="text-info">Edit Teacher</h3>
+                    </div>
+                    <div class="modal-body" style="margin-left: 20px">
+                        <form class="form-horizontal" name="AtualizarForm">
+                            <div class="form-group">
+                                <input class="form-control" readonly="readonly" name="FuncionarioId" ng-model="AtualizadoFuncionarioId" type="hidden" placeholder="Funcionario Id" />
+                            </div>
+                            <div class="form-group">
+                                <label class="text-info"> Nome</label>
+                                <input class="form-control" name="Nome" ng-model="AtualizadoNome" type="text" placeholder="Nome" />
+                            </div>
+                            <div class="form-group">
+                                <label class="text-info"> Email</label>
+                                <input class="form-control" name="Email" ng-model="AtualizadoEmail" type="email" placeholder="Email" />
+                            </div>
+                            <div class="form-group">
+                                <label class="text-info"> Departamento</label>
+                                <input class="form-control" name="Departamento" ng-model="AtualizadoDepartamento" type="text" placeholder="Departamento" />
+                            </div>
+                            <div class="form-group">
+                                <label class="text-info"> Cargo</label>
+                                <input class="form-control" name="Cargo" ng-model="AtualizadoCargo" type="text" placeholder="Cargo" />
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" id="btnUpdate" data-dismiss="modal" ng-click="atualizarFuncionario()">
+                            Atualizar
+                        </button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal" role="dialog" id="ExcluirFuncionario">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="text-info">Você tem certeza que deseja excluir o Funcionário?</h3>
+                    </div>
+                    <div class="modal-body">
+                        <div>
+                            <p>Id do Funcionário : {{AtualizadoFuncionarioId}}</p>
+                            <p>Nome do Fucionário : {{AtualizadoNome}}</p>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="excluirFuncionario(AtualizadoFuncionarioId)">Excluir</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script src="~/AngularJsApp/Grade/Module.js"></script>
+    <script src="~/AngularJsApp/Teacher/Service.js"></script>
+    <script src="~/AngularJsApp/Teacher/Controller.js"></script>
+}
+
+<style>
+    .form-group {
+        width: 100%;
+    }
+
+    input {
+        min-width: 70%;
+        margin: auto;
+    }
+</style>
