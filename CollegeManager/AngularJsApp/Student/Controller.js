@@ -15,20 +15,21 @@
             });
     }
 
-    $scope.addTeacher = function () {
+    $scope.addStudent = function () {
 
-        var teacher = {
-            teacherId: $scope.teacherId,
+        var student = {
+            studentId: $scope.teacherId,
             name: $scope.name,
+            rgnumber: $scope.rgnumber,
             birthday: $scope.birthday,
-            salary: $scope.salary,
+            courseid: $scope.courseid,
         };
 
-        var addInfos = teacherService.addTeacher(teacher);
+        var addInfos = studentService.addStudent(student);
 
         addInfos.then(function (d) {
             if (d.data.success === true) {
-                loadTeachers();
+                loadStudents();
                 alert("Teacher added succesfuly!");
 
                 $scope.clearData();

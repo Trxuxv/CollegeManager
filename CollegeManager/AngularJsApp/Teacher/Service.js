@@ -15,18 +15,18 @@
         return request;
     }
 
-    this.atualizarFuncionario = function (course) {
+    this.updateTeacher = function (teacher) {
 
-        var requestAtualizado = $http({
+        var updatedRequest = $http({
             method: 'post',
-            url: '/Course/AtualizarFuncionario',
-            data: course
+            url: '/Teacher/UpdateTeacher',
+            data: teacher
         });
-        return requestAtualizado;
+        return updatedRequest;
     }
 
-    this.excluirFuncionario = function (AtualizadoFuncionarioId) {
+    this.deleteTeacher = function (UpdatedTeacherId) {
 
-        return $http.post('/Course/ExcluirFuncionario/' + AtualizadoFuncionarioId);
+        return $http.post('/Teacher/DeleteTeacher/' + UpdatedTeacherId);
     }
 });

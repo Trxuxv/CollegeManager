@@ -37,5 +37,22 @@ namespace CollegeManager.Controllers
                 return Json(listStudents, JsonRequestBehavior.AllowGet);
             }
         }
+
+        [HttpPost]
+        public JsonResult AddStudent(Student student)
+        {
+            if (student != null)
+            {
+                using (var db = new CollegeEntities())
+                {
+                    db.Students.Add(student);
+                    db.SaveChanges();
+
+                    return Json(new { success = true });
+                }
+            }
+            return Json(new { success = false });
+        }
+
     }
 }

@@ -44,7 +44,63 @@
         $scope.name = "";
         $scope.birthday = "";
         $scope.salary = "";
-        $scope.course = "";
     }
 
+    $scope.updateTeacherById = function (teacher) {
+        $scope.UpdatedTeacherId = teacher.TeacherId,
+        $scope.UpdatedName= teacher.Name;
+        $scope.UpdatedBirthday = teacher.Birthday;
+        $scope.UpdatedSalary = teacher.Salary;
+    }
+
+    $scope.updateTeacher = function () {
+        var teacher = {
+            TeacherId: $scope.UpdatedTeacherId,
+            Name: $scope.UpdatedName,
+            Birthday: $scope.UpdatedBirthday,
+            Salary: $scope.UpdatedSalary,
+        };
+        var refreshInfos = teacherService.updateTeacher(teacher);
+        refreshInfos.then(function (d) {
+            if (d.data.success === true) {
+                loadTeachers();
+                alert("Funcionario Atualizado com Sucesso!");
+                $scope.clearUpdatedData();
+            }
+            else {
+                alert("Funcionário não Atualizado");
+            }
+        },
+            function () {
+                alert("Ocorreu um erro ao tentar atualizar o Funcionário!");
+            });
+    }
+
+    $scope.clearUpdatedData = function () {
+        $scope.UpdatedTeacherId = '';
+        $scope.UpdatedName = '';
+        $scope.UpdatedBirthday = '';
+        $scope.UpdatedSalary = '';
+    }
+
+    $scope.deleteTeacherById = function (teacher) {
+        $scope.UpdatedTeacherId = teacher.TeacherId;
+        $scope.UpdatedName = teacher.Name;
+    }
+
+    $scope.deleteTeacher = function (UpdatedTeacherId) {
+
+        var deleteInfos = teacherService.deleteTeacher($scope.UpdatedTeacherId);
+        deleteInfos.then(function (d) {
+
+            if (d.data.success === true) {
+                loadTeachers();
+
+                alert("Funcionário excluído com Sucesso!");
+            }
+            else {
+                alert("Funcionário não excluído!");
+            }
+        });
+    }
 });

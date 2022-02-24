@@ -5,13 +5,12 @@
         return $http.get("/Student/GetStudents");
     }
 
-    //Método responsável por Adicionar Funcionário: CREATE
-    this.addCourse = function (course) {
+    this.addStudent = function (student) {
 
         var request = $http({
             method: 'post',
-            url: '/Course/AddCourse',
-            data: course
+            url: '/Student/AddStudent',
+            data: student
         });
 
         return request;

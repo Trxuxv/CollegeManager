@@ -51,7 +51,46 @@ namespace CollegeManager.Controllers
             return Json(new { success = false });
         }
 
+        [HttpPost]
+        public JsonResult UpdateTeacher(Teacher teacher)
+        {
+            using (var db = new CollegeEntities()) 
+            {
+                var teacherUpdated = db.Teachers.Find(teacher.TeacherId);
 
+                if (teacherUpdated == null)
+                {
+                    return Json(new { success = false });
+                }
 
+                else
+                {
+                    teacherUpdated.Name = teacher.Name;
+                    teacherUpdated.Birthday = teacher.Birthday;
+                    teacherUpdated.Salary = teacher.Salary;
+
+                    db.SaveChanges();
+                    return Json(new { success = true });
+                }
+            }
+        }
+
+        [HttpPost]
+        public JsonResult DeleteTeacher(int id)
+        {
+            using (var db = new CollegeEntities())
+            {
+                var teacher = db.Teachers.Find(id);
+                if (teacher == null)
+                {
+                    return Json(new { success = false });
+                }
+
+                db.Teachers.Remove(teacher);
+                db.SaveChanges();
+
+                return Json(new { success = true });
+            }
+        }
     }
 }
