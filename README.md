@@ -14,3 +14,5 @@ This is a system test of management of colleges.
 🟦Entity Framework
 <br>
 🟩C# ASP.NET
+<br>
+🟪MVC
