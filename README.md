@@ -5,7 +5,7 @@ This is a system test of management of colleges.
 
 :)
 
-Technologies used:
+<b>Technologies used:</b>
 <br>
 🟥AngularJS
 <br>
