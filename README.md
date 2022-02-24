@@ -21,4 +21,3 @@ Technologies used:
 <br>
 
 Coded by Débora Ferreira<b>@2022<b>
-𝐂𝐨𝐝𝐞𝐝 𝐛𝐲 𝐃é𝐛𝐨𝐫𝐚 𝐅𝐞𝐫𝐫𝐞𝐢𝐫𝐚@𝟐𝟎𝟐𝟐
