@@ -2,6 +2,11 @@
 
     loadCourses();
 
+    $scope.signalError = false;
+    $scope.signalSuccess = false;
+    $scope.msgSuccess = "";
+    $scope.msgError = "";
+
     function loadCourses() {
         var listCourses = courseService.getAllCourses();
 
@@ -9,7 +14,9 @@
             $scope.Courses = d.data;
         },
             function () {
-                alert("Ocorreu um erro ao tentar listar todos os curs!");
+                this.$scope.msgError = "Could not access data";
+                setTimeout(() => this.$scope.signalError = true, 5000);
+                //alert("Erro!");
             });
     }
 
@@ -27,10 +34,14 @@
         adicionarInfos.then(function (d) {
             if (d.data.success === true) {
                 loadCourses();
-                alert("Funcionário Adicionado com Sucesso!");
+                setTimeout(() => this.$scope.msgSuccess = true, 5000);
+
+                this.$scope.msgSuccess = "Course added with success.";
 
                 $scope.limparDados();
-            } else { alert("Funcionário não Adicionado!"); }
+            } else {
+                alert("Funcionário não Adicionado!");
+            }
         },
             function () {
                 alert("Ocorreu um erro ao tentar adicionar um Novo Funcionário!");
