@@ -12,3 +12,5 @@ This is a system test of management of colleges.
 🟨SQL Server
 <br>
 🟦Entity Framework
+<br>
+🟩C# ASP.NET
