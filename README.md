@@ -23,6 +23,8 @@ Technologies used:
 ︵‿︵‿︵‿︵‿︵‿︵‿︵‿︵‿︵   Guide   ︵‿︵‿︵‿︵‿︵‿︵‿︵‿︵‿︵   <br>
 <br>
 To run the project be sure that your package: Microsoft.CodeDom.Providers.DotNetCompilerPlatform is uppdated.
+<br>
+After this, you'll have to configure the Database.
 
 
 
