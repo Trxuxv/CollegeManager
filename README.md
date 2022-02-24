@@ -20,4 +20,10 @@ Technologies used:
 🟪MVC
 <br>
 
+=============================================   Guide   ====================================================
+To run the project be sure that your package: Microsoft.CodeDom.Providers.DotNetCompilerPlatform is uppdated.
+
+
+
+
 Coded by Débora Ferreira<b>@2022<b>
