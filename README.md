@@ -6,6 +6,7 @@ This is a system test of management of colleges.
 :)
 
 Technologies used:
+<br>
 🟥AngularJS
 🟨SQL Server
 🟦Entity Framework
