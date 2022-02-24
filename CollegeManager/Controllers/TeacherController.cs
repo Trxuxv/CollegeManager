@@ -12,14 +12,46 @@ namespace CollegeManager.Controllers
             return View();
         }
 
+        [HttpGet]
         public JsonResult GetTeachers()
         {
-            using (var db = new CollegeManagerEntities())
-            {
-                List<Teacher> listarFuncionarios = db.Teachers.ToList();
 
-                return Json(listarFuncionarios, JsonRequestBehavior.AllowGet);
+            using ( var db = new CollegeManagerEntities())
+            {
+                var listTeachers = new List<Teacher>();
+
+                try
+                {
+                    listTeachers = db.Teachers.ToList();
+
+                }
+                catch (System.Exception e)
+                {
+
+                    throw e;
+                }
+
+                return Json(listTeachers, JsonRequestBehavior.AllowGet);
             }
         }
+
+        [HttpPost]
+        public JsonResult AddTeacher(Teacher teacher)
+        {
+            if (teacher != null)
+            {
+                using (var db = new CollegeManagerEntities())
+                {
+                    db.Teachers.Add(teacher);
+                    db.SaveChanges();
+
+                    return Json(new { success = true });
+                }
+            }
+            return Json(new { success = false });
+        }
+
+
+
     }
 }

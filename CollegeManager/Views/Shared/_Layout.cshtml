@@ -3,12 +3,12 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>College Manager </title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top" style="background: #161b22;">
+    <div class="navbar navbar-inverse navbar-fixed-top" style="background: #161b22; border: none;">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -30,11 +30,10 @@
             </div>
         </div>
     </div>
-    <div class="container body-content">
+    <div class="container body-content" style="width: 100%; padding-top: 3em; padding-left: 0; ">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        <footer style="bottom: 0; position: fixed; height: 5rem; padding: 1em; text-align: center; width: 100%; background: #161b22; ">
+            <p style="color: white;">&copy; @DateTime.Now.Year Débora Ferreira@MagniFinance</p>
         </footer>
     </div>
     

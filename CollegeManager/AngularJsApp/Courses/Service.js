@@ -5,6 +5,10 @@
         return $http.get("/Course/GetCourse");
     }
 
+    this.getAllTeachers = function () {
+        return $http.get("/Teacher/GetTeachers");
+    }
+
     this.addCourse = function (course) {
 
         var request = $http({

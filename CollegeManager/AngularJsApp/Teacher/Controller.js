@@ -6,34 +6,45 @@
         var listTeachers = teacherService.getAllTeachers();
 
         listTeachers.then(function (d) {
+            console.log(d)
             $scope.Teachers = d.data;
         },
-            function () {
+            function (erro) {
+                console.log(erro)
                 alert("Error: get teachers");
             });
     }
 
-    $scope.addCourse = function () {
+    $scope.addTeacher = function () {
 
-        var course = {
-            courseId: $scope.courseId,
-            description: $scope.description,
-            duration: $scope.duration,
-            minGrade: $scope.minGrade,
+        var teacher = {
+            teacherId: $scope.teacherId,
+            name: $scope.name,
+            birthday: $scope.birthday,
+            salary: $scope.salary,
         };
 
-        var adicionarInfos = courseService.addCourse(course);
+        var addInfos = teacherService.addTeacher(teacher);
 
-        adicionarInfos.then(function (d) {
+        addInfos.then(function (d) {
             if (d.data.success === true) {
-                loadCourses();
-                alert("Funcionário Adicionado com Sucesso!");
+                loadTeachers();
+                alert("Teacher added succesfuly!");
 
-                $scope.limparDados();
-            } else { alert("Funcionário não Adicionado!"); }
+                $scope.clearData();
+            } else { alert("Teacher wasn't added!"); }
         },
             function () {
                 alert("Ocorreu um erro ao tentar adicionar um Novo Funcionário!");
             });
     }
+
+    $scope.clearData = function () {
+        $scope.teacherId = "";
+        $scope.name = "";
+        $scope.birthday = "";
+        $scope.salary = "";
+        $scope.course = "";
+    }
+
 });

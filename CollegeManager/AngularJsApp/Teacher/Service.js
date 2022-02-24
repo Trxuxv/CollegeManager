@@ -1,16 +1,15 @@
 ﻿teacherApp.service('teacherService', function ($http) {
 
     this.getAllTeachers = function () {
-
         return $http.get("/Teacher/GetTeachers");
     }
 
-    this.addCourse = function (course) {
+    this.addTeacher = function (teacher) {
 
         var request = $http({
             method: 'post',
-            url: '/Course/AddCourse',
-            data: course
+            url: '/Teacher/AddTeacher',
+            data: teacher
         });
 
         return request;

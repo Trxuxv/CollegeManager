@@ -1,0 +1,2 @@
+﻿ALTER TABLE Student 
+ADD CourseId INT NOT NULL REFERENCES Course(CourseId)

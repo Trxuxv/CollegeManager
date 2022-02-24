@@ -1,39 +1,39 @@
-﻿<div class="container" ng-app="subjects" ng-controller="subjectCtrl" style="width: 90%; height: 80rem; background-color: #0d1117; padding:1%; margin-top: 3%;">
+﻿<div class="container" ng-app="subjects" ng-controller="subjectCtrl" style="width: 70%; height: 75rem; background-color: #0d1117; padding:1%;">
     @* INÍCIO DIV - panel panel-info *@
-    <div class="panel" style="border: 0.3px solid #8B949E; ">
+    <div class="panel" style="border: none; background: #161b22 ">
         <div class="panel-heading" style="border: none; background: #161b22; color: #C9D1D9;">Subjects</div>
 
-        <div class="panel-body" style="background: #0d1117; color: #8B949E;">
+        <div class="panel-body" style="background: #0d1117; color: #161b22;">
             <button type="button" class="btn btn-info" data-target="#AdicionarFuncionario" data-toggle="modal" style="border-radius: 25px; width: 38px;">
                 <span class="glyphicon glyphicon-plus"></span>
             </button>
         </div>
 
-        <table class="table" style="background: #0d1117; color: #8B949E;border: 0.2px solid #8B949E; ">
+        <table class="table" style="background: #0d1117; color: #8B949E; border: 0.2px solid #161b22; ">
             <thead style="background-color: #161b22; border: none; color: white; ">
                 <tr>
-                    <th class="text-center" style="border-bottom: 0.5px solid #ddd">Course Id</th>
-                    <th class="text-center" style="border-bottom: 0.5px solid #ddd">Description</th>
-                    <th class="text-center" style="border-bottom: 0.5px solid #ddd">Duration</th>
-                    <th class="text-center" style="border-bottom: 0.5px solid #ddd">Min. Grade</th>
-                    <th class="text-center" style="border-bottom: 0.5px solid #ddd">Actions</th>
+                    <th class="text-center" style="border-bottom: 0.5px solid #161b22">Course Id</th>
+                    <th class="text-center" style="border-bottom: 0.5px solid #161b22">Description</th>
+                    <th class="text-center" style="border-bottom: 0.5px solid #161b22">Duration</th>
+                    <th class="text-center" style="border-bottom: 0.5px solid #161b22">Min. Grade</th>
+                    <th class="text-center" style="border-bottom: 0.5px solid #161b22">Actions</th>
                 </tr>
             </thead>
 
-            <tbody style="background: #0d1117; color: #8B949E;border: 0.2px solid #8B949E; ">
+            <tbody style="background: #0d1117; color: #8B949E; border: 0.2px solid #161b22; ">
                 <tr ng-repeat="c in Courses">
                     <td class="text-center">{{c.CourseId}}</td>
                     <td class="text-center">{{c.Description}}</td>
                     <td class="text-center">{{c.Duration}}</td>
                     <td class="text-center">{{c.MinGrade}}</td>
-                    <td class="text-center" style="width: 200px;">
-                        <a href="#" style="border-radius: 25px;"
+                    <td class="text-center buttons" style="width: 200px;">
+                        <a href="#" style="border-radius: 25px; padding: 0.3em 0.6em; margin-right: 0.5em;"
                            data-target="#AtualizarFuncionario"
                            data-toggle="modal" class="btn btn-success"
                            ng-click="atualizarFuncionarioPorId(func)">
                             <span class="glyphicon glyphicon-pencil"></span>
                         </a>
-                        <a href="#" style="border-radius: 25px;"
+                        <a href="#" style="border-radius: 25px; padding: 0.3em 0.6em; margin-right: 0.5em;"
                            data-target="#ExcluirFuncionario"
                            id="btnExcluir"
                            data-toggle="modal" class="btn btn-danger"
@@ -162,5 +162,20 @@
     input {
         min-width: 70%;
         margin: auto;
+    }
+
+    td {
+        border: none;
+        font-size: 0.9em;
+        height: 5rem !important;
+        padding-top: 1.6em !important;
+    }
+
+    .buttons {
+        padding: 1.2rem !important;
+    }
+
+    th {
+        font-weight: 300;
     }
 </style>
