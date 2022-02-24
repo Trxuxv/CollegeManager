@@ -1,0 +1,46 @@
+﻿CREATE TABLE Teacher
+(
+	TeacherId INT NOT NULL IDENTITY,
+	Name NVARCHAR(100) NOT NULL,
+	Birthday DATETIME NOT NULL,
+	Salary FLOAT NOT NULL
+);
+
+CREATE TABLE Course 
+(
+	CourseId INT NOT NULL IDENTITY,
+	Name NVARCHAR(100) NOT NULL,
+	Duration INT NOT NULL,
+	Category NVARCHAR(100) NOT NULL,
+	TeacherId INT FOREIGN KEY REFERENCES Teacher(TeacherId)
+);
+
+CREATE TABLE Subject 
+(
+	SubjectId INT NOT NULL IDENTITY,
+	Name NVARCHAR(100) NOT NULL,
+	Approved BIT NOT NULL,
+	CourseId INT FOREIGN KEY REFERENCES Course(CourseId),
+);
+
+CREATE TABLE Student 
+(
+	StudentId INT NOT NULL IDENTITY,
+	Name NVARCHAR(100) NOT NULL,
+	RgNumber INT NOT NULL,
+	Birthday DATETIME NOT NULL,
+	CourseId INT FOREIGN KEY REFERENCES Course(CourseId)
+);
+
+CREATE TABLE Grade 
+(
+	GradeId INT NOT NULL IDENTITY,
+	GradeDescription INT NOT NULL
+);
+
+CREATE TABLE Subject_Student (
+  StudentId INT NOT NULL,
+  SubjectId INT NOT NULL,
+  GradeId INT FOREIGN KEY REFERENCES Grade(GradeId),
+  PRIMARY KEY (StudentId, SubjectId)
+);
