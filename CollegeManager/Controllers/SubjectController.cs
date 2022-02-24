@@ -1,28 +1,30 @@
-﻿using System.Collections.Generic;
-using CollegeManager.Models;
-using System.Web.Mvc;
+﻿using CollegeManager.Models;
+using System.Collections.Generic;
 using System.Linq;
+using System.Web.Mvc;
 
 namespace CollegeManager.Controllers
 {
-    public class TeacherController : Controller
+    public class SubjectController : Controller
     {
+        // GET: Subject
         public ActionResult Index()
         {
             return View();
         }
 
+
         [HttpGet]
-        public JsonResult GetTeachers()
+        public JsonResult GetSubjects()
         {
 
-            using ( var db = new CollegeEntities())
+            using (var db = new CollegeEntities())
             {
-                var listTeachers = new List<Teacher>();
+                var listSubjects = new List<Subject>();
 
                 try
                 {
-                    listTeachers = db.Teachers.ToList();
+                    listSubjects = db.Subjects.ToList();
 
                 }
                 catch (System.Exception e)
@@ -31,7 +33,7 @@ namespace CollegeManager.Controllers
                     throw e;
                 }
 
-                return Json(listTeachers, JsonRequestBehavior.AllowGet);
+                return Json(listSubjects, JsonRequestBehavior.AllowGet);
             }
         }
 
@@ -50,8 +52,6 @@ namespace CollegeManager.Controllers
             }
             return Json(new { success = false });
         }
-
-
 
     }
 }

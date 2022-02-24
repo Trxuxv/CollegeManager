@@ -1,9 +1,8 @@
-﻿teacherApp.service('teacherService', function ($http) {
+﻿studentApp.service('studentService', function ($http) {
 
-    //Método responsável por Listar todos os Funcionários: READ
-    this.getAllTeachers = function () {
+    this.getAllStudents = function () {
 
-        return $http.get("/Teacher/GetFuncionario");
+        return $http.get("/Student/GetStudents");
     }
 
     //Método responsável por Adicionar Funcionário: CREATE

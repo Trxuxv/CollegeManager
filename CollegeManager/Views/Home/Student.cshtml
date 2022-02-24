@@ -1,28 +1,31 @@
-﻿<div class="container" ng-app="teachers" ng-controller="teacherCtrl" style="width: 70%; height: 75rem; background-color: #0d1117; padding:1%;">
+﻿<div class="container" ng-app="students" ng-controller="studentCtrl" style="width: 70%; height: 75rem; background-color: #0d1117; padding:1%;">
     <div class="panel" style="background: #161b22; ">
         <div class="panel-heading" style="border: none; background: #161b22; color: #C9D1D9;">Students</div>
         <div class="panel-body" style="background: #0d1117; color: #8B949E;">
-            <button type="button" class="btn btn-info" data-target="#AdicionarFuncionario" data-toggle="modal" style="border-radius: 25px; width: 38px;">
+            <button type="button" class="btn btn-primary"  data-target="#AdicionarFuncionario" data-toggle="modal" style="border-radius: 25px; width: 38px;">
                 <span class="glyphicon glyphicon-plus"></span>
             </button>
         </div>
         <table class="table" style="background: #0d1117; color: #8B949E; border: 0.2px solid #161b22; ">
             <thead style="background-color: #161b22; border: none; color: white; ">
                 <tr>
-                    <th class="text-center" style="border-bottom: 0.5px solid #161b22">Teacher Id</th>
+                    <th class="text-center" style="border-bottom: 0.5px solid #161b22">ID</th>
                     <th class="text-center" style="border-bottom: 0.5px solid #161b22">Name</th>
                     <th class="text-center" style="border-bottom: 0.5px solid #161b22">Birthday</th>
-                    <th class="text-center" style="border-bottom: 0.5px solid #161b22">Salary</th>
+                    <th class="text-center" style="border-bottom: 0.5px solid #161b22">Registration Number</th>
+                    <th class="text-center" style="border-bottom: 0.5px solid #161b22">Course</th>
                     <th class="text-center" style="border-bottom: 0.5px solid #161b22">Actions</th>
                 </tr>
             </thead>
             <tbody style="background: #0d1117; color: #8B949E; border: 0.2px solid #161b22; ">
-                <tr ng-repeat="c in Teachers">
-                    <td class="text-center">{{c.TeacherId}}</td>
+                <tr ng-repeat="c in Students">
+                    <td class="text-center">{{c.StudentId}}</td>
                     <td class="text-center">{{c.Name}}</td>
                     <td class="text-center">{{c.Birthday}}</td>
-                    <td class="text-center">{{c.Salary}}</td>
-                    <td class="text-center buttons" style="width: 200px;">
+                    <td class="text-center">{{c.RgNumber}}</td>
+                    <td class="text-center">{{c.CourseId}}</td>
+
+                    <td class="text-center" style="width: 150px; padding: 0.5%;">
                         <a href="#" style="border-radius: 25px; padding: 0.3em 0.6em; margin-right: 0.5em;"
                            data-target="#AtualizarFuncionario"
                            data-toggle="modal" class="btn btn-success"
@@ -131,9 +134,9 @@
 </div>
 
 @section scripts {
-    <script src="~/AngularJsApp/Grade/Module.js"></script>
-    <script src="~/AngularJsApp/Teacher/Service.js"></script>
-    <script src="~/AngularJsApp/Teacher/Controller.js"></script>
+    <script src="~/AngularJsApp/Student/Module.js"></script>
+    <script src="~/AngularJsApp/Student/Service.js"></script>
+    <script src="~/AngularJsApp/Student/Controller.js"></script>
 }
 
 <style>

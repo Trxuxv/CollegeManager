@@ -2,6 +2,6 @@
 
 (function () {
 
-    subjectApp = angular.module('subject', []);
+    subjectApp = angular.module('subjects', []);
 
 })();

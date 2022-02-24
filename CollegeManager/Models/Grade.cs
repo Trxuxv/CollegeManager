@@ -12,14 +12,9 @@ namespace CollegeManager.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Student
+    public partial class Grade
     {
-        public int StudentId { get; set; }
-        public string Name { get; set; }
-        public int RgNumber { get; set; }
-        public System.DateTime Birthday { get; set; }
-        public int CourseId { get; set; }
-    
-        public virtual Course Course { get; set; }
+        public int GradeId { get; set; }
+        public int GradeDescription { get; set; }
     }
 }

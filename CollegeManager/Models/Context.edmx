@@ -15,6 +15,13 @@
           <Property Name="Category" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="TeacherId" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="Grade">
+          <Key>
+            <PropertyRef Name="GradeId" />
+          </Key>
+          <Property Name="GradeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GradeDescription" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="Student">
           <Key>
             <PropertyRef Name="StudentId" />
@@ -22,9 +29,17 @@
           <Property Name="StudentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="RgNumber" Type="int" Nullable="false" />
-          <Property Name="Birthday" Type="date" />
-          <Property Name="Grade" Type="float" />
+          <Property Name="Birthday" Type="date" Nullable="false" />
           <Property Name="CourseId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Subject">
+          <Key>
+            <PropertyRef Name="SubjectId" />
+          </Key>
+          <Property Name="SubjectId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="CourseId" Type="int" Nullable="false" />
+          <Property Name="Approved" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -57,7 +72,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Student__CourseI__33D4B598">
+        <Association Name="FK__Student__CourseI__3E52440B">
           <End Role="Course" Type="Self.Course" Multiplicity="1" />
           <End Role="Student" Type="Self.Student" Multiplicity="*" />
           <ReferentialConstraint>
@@ -69,18 +84,36 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Subject__CourseI__3B75D760">
+          <End Role="Course" Type="Self.Course" Multiplicity="1" />
+          <End Role="Subject" Type="Self.Subject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="CourseId" />
+            </Principal>
+            <Dependent Role="Subject">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="CollegeManagerModelStoreContainer">
           <EntitySet Name="Course" EntityType="Self.Course" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Grade" EntityType="Self.Grade" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Subject" EntityType="Self.Subject" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Teacher" EntityType="Self.Teacher" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__Course__TeacherI__267ABA7A" Association="Self.FK__Course__TeacherI__267ABA7A">
             <End Role="Teacher" EntitySet="Teacher" />
             <End Role="Course" EntitySet="Course" />
           </AssociationSet>
-          <AssociationSet Name="FK__Student__CourseI__33D4B598" Association="Self.FK__Student__CourseI__33D4B598">
+          <AssociationSet Name="FK__Student__CourseI__3E52440B" Association="Self.FK__Student__CourseI__3E52440B">
             <End Role="Course" EntitySet="Course" />
             <End Role="Student" EntitySet="Student" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Subject__CourseI__3B75D760" Association="Self.FK__Subject__CourseI__3B75D760">
+            <End Role="Course" EntitySet="Course" />
+            <End Role="Subject" EntitySet="Subject" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -98,7 +131,15 @@
           <Property Name="Category" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="TeacherId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Teacher" Relationship="Self.FK__Course__TeacherI__267ABA7A" FromRole="Course" ToRole="Teacher" />
-          <NavigationProperty Name="Students" Relationship="Self.FK__Student__CourseI__33D4B598" FromRole="Course" ToRole="Student" />
+          <NavigationProperty Name="Students" Relationship="Self.FK__Student__CourseI__3E52440B" FromRole="Course" ToRole="Student" />
+          <NavigationProperty Name="Subjects" Relationship="Self.FK__Subject__CourseI__3B75D760" FromRole="Course" ToRole="Subject" />
+        </EntityType>
+        <EntityType Name="Grade">
+          <Key>
+            <PropertyRef Name="GradeId" />
+          </Key>
+          <Property Name="GradeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GradeDescription" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Student">
           <Key>
@@ -107,10 +148,19 @@
           <Property Name="StudentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="RgNumber" Type="Int32" Nullable="false" />
-          <Property Name="Birthday" Type="DateTime" Precision="0" />
-          <Property Name="Grade" Type="Double" />
+          <Property Name="Birthday" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="CourseId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Course" Relationship="Self.FK__Student__CourseI__33D4B598" FromRole="Student" ToRole="Course" />
+          <NavigationProperty Name="Course" Relationship="Self.FK__Student__CourseI__3E52440B" FromRole="Student" ToRole="Course" />
+        </EntityType>
+        <EntityType Name="Subject">
+          <Key>
+            <PropertyRef Name="SubjectId" />
+          </Key>
+          <Property Name="SubjectId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CourseId" Type="Int32" Nullable="false" />
+          <Property Name="Approved" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Course" Relationship="Self.FK__Subject__CourseI__3B75D760" FromRole="Subject" ToRole="Course" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -144,7 +194,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Student__CourseI__33D4B598">
+        <Association Name="FK__Student__CourseI__3E52440B">
           <End Role="Course" Type="Self.Course" Multiplicity="1" />
           <End Role="Student" Type="Self.Student" Multiplicity="*" />
           <ReferentialConstraint>
@@ -156,18 +206,36 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="CollegeManagerEntities" annotation:LazyLoadingEnabled="true">
+        <Association Name="FK__Subject__CourseI__3B75D760">
+          <End Role="Course" Type="Self.Course" Multiplicity="1" />
+          <End Role="Subject" Type="Self.Subject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="CourseId" />
+            </Principal>
+            <Dependent Role="Subject">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CollegeEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Courses" EntityType="Self.Course" />
+          <EntitySet Name="Grades" EntityType="Self.Grade" />
           <EntitySet Name="Students" EntityType="Self.Student" />
+          <EntitySet Name="Subjects" EntityType="Self.Subject" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="Teachers" EntityType="Self.Teacher" />
           <AssociationSet Name="FK__Course__TeacherI__267ABA7A" Association="Self.FK__Course__TeacherI__267ABA7A">
             <End Role="Teacher" EntitySet="Teachers" />
             <End Role="Course" EntitySet="Courses" />
           </AssociationSet>
-          <AssociationSet Name="FK__Student__CourseI__33D4B598" Association="Self.FK__Student__CourseI__33D4B598">
+          <AssociationSet Name="FK__Student__CourseI__3E52440B" Association="Self.FK__Student__CourseI__3E52440B">
             <End Role="Course" EntitySet="Courses" />
             <End Role="Student" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Subject__CourseI__3B75D760" Association="Self.FK__Subject__CourseI__3B75D760">
+            <End Role="Course" EntitySet="Courses" />
+            <End Role="Subject" EntitySet="Subjects" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -175,7 +243,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="CollegeManagerModelStoreContainer" CdmEntityContainer="CollegeManagerEntities">
+        <EntityContainerMapping StorageEntityContainer="CollegeManagerModelStoreContainer" CdmEntityContainer="CollegeEntities">
           <EntitySetMapping Name="Courses">
             <EntityTypeMapping TypeName="CollegeManagerModel.Course">
               <MappingFragment StoreEntitySet="Course">
@@ -187,6 +255,14 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Grades">
+            <EntityTypeMapping TypeName="CollegeManagerModel.Grade">
+              <MappingFragment StoreEntitySet="Grade">
+                <ScalarProperty Name="GradeId" ColumnName="GradeId" />
+                <ScalarProperty Name="GradeDescription" ColumnName="GradeDescription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Students">
             <EntityTypeMapping TypeName="CollegeManagerModel.Student">
               <MappingFragment StoreEntitySet="Student">
@@ -194,8 +270,17 @@
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="RgNumber" ColumnName="RgNumber" />
                 <ScalarProperty Name="Birthday" ColumnName="Birthday" />
-                <ScalarProperty Name="Grade" ColumnName="Grade" />
                 <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Subjects">
+            <EntityTypeMapping TypeName="CollegeManagerModel.Subject">
+              <MappingFragment StoreEntitySet="Subject">
+                <ScalarProperty Name="SubjectId" ColumnName="SubjectId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+                <ScalarProperty Name="Approved" ColumnName="Approved" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

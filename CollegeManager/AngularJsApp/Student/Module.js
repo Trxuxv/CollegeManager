@@ -2,6 +2,6 @@
 
 (function () {
 
-    studentApp = angular.module('student', []);
+    studentApp = angular.module('students', []);
 
 })();

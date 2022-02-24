@@ -9,7 +9,7 @@
         <table class="table" style="background: #0d1117; color: #8B949E; border: 0.2px solid #161b22; ">
             <thead style="background-color: #161b22; border: none; color: white; ">
                 <tr>
-                    <th class="text-center" style="border: 0.5px solid #161b22">Teacher Id</th>
+                    <th class="text-center" style="border: 0.5px solid #161b22">ID</th>
                     <th class="text-center" style="border: 0.5px solid #161b22">Name</th>
                     <th class="text-center" style="border: 0.5px solid #161b22">Birthday</th>
                     <th class="text-center" style="border: 0.5px solid #161b22">Salary</th>
@@ -22,7 +22,7 @@
                     <td class="text-center">{{c.Name}}</td>
                     <td class="text-center">{{c.Birthday  | date : format : timezone}}</td>
                     <td class="text-center">{{c.Salary  | currency : symbol : fractionSize}}</td>
-                    <td class="text-center buttons" style="width: 200px;">
+                    <td class="text-center" style="width: 150px; padding: 0.5%;">
                         <a href="#" style="border-radius: 25px; padding: 0.3em 0.6em; margin-right: 0.5em;"
                            data-target="#AtualizarFuncionario"
                            data-toggle="modal" class="btn btn-success"

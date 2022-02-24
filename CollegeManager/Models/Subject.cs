@@ -12,22 +12,13 @@ namespace CollegeManager.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Course
+    public partial class Subject
     {
-        public Course()
-        {
-            this.Students = new HashSet<Student>();
-            this.Subjects = new HashSet<Subject>();
-        }
-    
-        public int CourseId { get; set; }
+        public int SubjectId { get; set; }
         public string Name { get; set; }
-        public int Duration { get; set; }
-        public string Category { get; set; }
-        public int TeacherId { get; set; }
+        public int CourseId { get; set; }
+        public bool Approved { get; set; }
     
-        public virtual Teacher Teacher { get; set; }
-        public virtual ICollection<Student> Students { get; set; }
-        public virtual ICollection<Subject> Subjects { get; set; }
+        public virtual Course Course { get; set; }
     }
 }

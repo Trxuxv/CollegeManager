@@ -1,24 +1,21 @@
-﻿teacherApp.service('teacherService', function ($http) {
+﻿subjectApp.service('subjectService', function ($http) {
 
-    //Método responsável por Listar todos os Funcionários: READ
-    this.getAllTeachers = function () {
+    this.getAllSubjects = function () {
 
-        return $http.get("/Teacher/GetFuncionario");
+        return $http.get("/Subject/GetSubjects");
     }
 
-    //Método responsável por Adicionar Funcionário: CREATE
-    this.addCourse = function (course) {
+    this.addSubject = function (course) {
 
         var request = $http({
             method: 'post',
-            url: '/Course/AddCourse',
-            data: course
+            url: '/Subject/AddSubject',
+            data: subject
         });
 
         return request;
     }
 
-    //Método responsável por Atualizar Funcionário Por Id: Update
     this.atualizarFuncionario = function (course) {
 
         var requestAtualizado = $http({
@@ -29,7 +26,6 @@
         return requestAtualizado;
     }
 
-    //Método responsável por Excluir Funcionário Por Id: Delete
     this.excluirFuncionario = function (AtualizadoFuncionarioId) {
 
         return $http.post('/Course/ExcluirFuncionario/' + AtualizadoFuncionarioId);
