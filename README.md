@@ -3,5 +3,6 @@
 
 This is a system test of management of colleges. 
 
-
 :)
+
+Technologies used:
