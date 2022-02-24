@@ -11,13 +11,13 @@ Technologies used:
 
 🟥AngularJS 
 <br>
-🟨𝐒𝐐𝐋 𝐒𝐞𝐫𝐯𝐞𝐫
+🟨SQL Server
 <br>
-🟦𝐄𝐧𝐭𝐢𝐭𝐲 𝐅𝐫𝐚𝐦𝐞𝐰𝐨𝐫𝐤
+🟦Entity Framework
 <br>
-🟩𝐂# 𝐀𝐒𝐏.𝐍𝐄𝐓
+🟩C# ASP.NET
 <br>
-🟪𝐌𝐕𝐂
+🟪MVC
 <br>
 
 Coded by Débora Ferreira<b>@2022<b>
