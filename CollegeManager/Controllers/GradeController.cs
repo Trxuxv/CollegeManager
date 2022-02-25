@@ -1,16 +1,12 @@
-﻿using CollegeManager.Models;
-using CollegeManager.Models.GradesModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using CollegeManager.Models.GradesModels;
+using CollegeManager.Models;
 using System.Web.Mvc;
+using System.Linq;
 
 namespace CollegeManager.Controllers
 {
     public class GradeController : Controller
     {
-        // GET: Grade
         public ActionResult Index()
         {
             return View();
@@ -39,13 +35,13 @@ namespace CollegeManager.Controllers
         }
 
         [HttpPost]
-        public JsonResult AddTeacher(Teacher teacher)
+        public JsonResult AddGrade(Grade grade)
         {
-            if (teacher != null)
+            if (grade != null)
             {
                 using (var db = new Entities())
                 {
-                    db.Teachers.Add(teacher);
+                    db.Grades.Add(grade);
                     db.SaveChanges();
 
                     return Json(new { success = true });
@@ -55,22 +51,22 @@ namespace CollegeManager.Controllers
         }
 
         [HttpPost]
-        public JsonResult UpdateTeacher(Teacher teacher)
+        public JsonResult UpdateGrade(Grade grade)
         {
             using (var db = new Entities())
             {
-                var teacherUpdated = db.Teachers.Find(teacher.TeacherId);
+                var gradeUpdated = db.Grades.Find(grade.GradeId);
 
-                if (teacherUpdated == null)
+                if (gradeUpdated == null)
                 {
                     return Json(new { success = false });
                 }
 
                 else
                 {
-                    teacherUpdated.Name = teacher.Name;
-                    teacherUpdated.Birthday = teacher.Birthday;
-                    teacherUpdated.Salary = teacher.Salary;
+                    gradeUpdated.GradeDescription = grade.GradeDescription;
+                    gradeUpdated.StudentId = grade.StudentId;
+                    gradeUpdated.SubjectId = grade.SubjectId;
 
                     db.SaveChanges();
                     return Json(new { success = true });
@@ -79,17 +75,17 @@ namespace CollegeManager.Controllers
         }
 
         [HttpPost]
-        public JsonResult DeleteTeacher(int id)
+        public JsonResult DeleteGrade(int id)
         {
             using (var db = new Entities())
             {
-                var teacher = db.Teachers.Find(id);
-                if (teacher == null)
+                var grade = db.Grades.Find(id);
+                if (grade == null)
                 {
                     return Json(new { success = false });
                 }
 
-                db.Teachers.Remove(teacher);
+                db.Grades.Remove(grade);
                 db.SaveChanges();
 
                 return Json(new { success = true });

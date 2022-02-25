@@ -8,6 +8,7 @@
             </button>
         </div>
 
+        @*LIST*@
         <table class="table" style="background: #0d1117; color: #8B949E; border: 0.2px solid #161b22; ">
             <thead style="background-color: #161b22; border: none; color: white; ">
                 <tr>
@@ -27,14 +28,14 @@
                         <a href="#" style="border-radius: 25px; padding: 0.3em 0.6em; margin-right: 0.5em;"
                            data-target="#AtualizarFuncionario"
                            data-toggle="modal" class="btn btn-success"
-                           ng-click="atualizarFuncionarioPorId(s)">
+                           ng-click="updateSubjectById(s)">
                             <span class="glyphicon glyphicon-pencil"></span>
                         </a>
                         <a href="#" style="border-radius: 25px; padding: 0.3em 0.6em; margin-right: 0.5em;"
                            data-target="#ExcluirFuncionario"
                            id="btnExcluir"
                            data-toggle="modal" class="btn btn-danger"
-                           ng-click="excluirFuncionarioPorId(s)">
+                           ng-click="deleteSubjectById(s)">
                             <span class="glyphicon glyphicon-trash"></span>
                         </a>
                     </td>
@@ -77,36 +78,28 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h3 class="text-info">Atualizar Funcionário</h3>
+                        <h3 class="text-info">Update Subject</h3>
                     </div>
                     <div class="modal-body" style="margin-left: 20px">
                         <form class="form-horizontal" name="AtualizarForm">
                             <div class="form-group">
-                                <input class="form-control" readonly="readonly" name="FuncionarioId" ng-model="AtualizadoFuncionarioId" type="hidden" placeholder="Funcionario Id" />
+                                <input class="form-control" readonly="readonly" name="UpdatedSubjectId" ng-model="UpdatedSubjectId" type="hidden" placeholder="Funcionario Id" />
                             </div>
                             <div class="form-group">
                                 <label class="text-info"> Nome</label>
-                                <input class="form-control" name="Nome" ng-model="AtualizadoNome" type="text" placeholder="Nome" />
+                                <input class="form-control" name="Nome" ng-model="UpdatedName" type="text" placeholder="Name" />
                             </div>
                             <div class="form-group">
                                 <label class="text-info"> Email</label>
-                                <input class="form-control" name="Email" ng-model="AtualizadoEmail" type="email" placeholder="Email" />
-                            </div>
-                            <div class="form-group">
-                                <label class="text-info"> Departamento</label>
-                                <input class="form-control" name="Departamento" ng-model="AtualizadoDepartamento" type="text" placeholder="Departamento" />
-                            </div>
-                            <div class="form-group">
-                                <label class="text-info"> Cargo</label>
-                                <input class="form-control" name="Cargo" ng-model="AtualizadoCargo" type="text" placeholder="Cargo" />
+                                <input class="form-control" name="CourseId" ng-model="UpdatedCourseId" type="text" placeholder="UpdatedCourseId" />
                             </div>
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" id="btnUpdate" data-dismiss="modal" ng-click="atualizarFuncionario()">
-                            Atualizar
+                        <button type="button" class="btn btn-primary" id="btnUpdate" data-dismiss="modal" ng-click="updateSubject()">
+                            Update
                         </button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>
@@ -121,12 +114,12 @@
                     </div>
                     <div class="modal-body">
                         <div>
-                            <p>Id do Funcionário : {{AtualizadoFuncionarioId}}</p>
-                            <p>Nome do Fucionário : {{AtualizadoNome}}</p>
+                            <p>Id do Funcionário : {{UpdatedSubjectId}}</p>
+                            <p>Nome do Fucionário : {{UpdatedName}}</p>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="excluirFuncionario(AtualizadoFuncionarioId)">Excluir</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="deleteSubject(UpdatedSubjectId)">Excluir</button>
                         <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
                     </div>
                 </div>

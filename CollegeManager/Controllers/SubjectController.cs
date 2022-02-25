@@ -8,7 +8,6 @@ namespace CollegeManager.Controllers
 {
     public class SubjectController : Controller
     {
-        // GET: Subject
         public ActionResult Index()
         {
             return View();
@@ -48,5 +47,45 @@ namespace CollegeManager.Controllers
             return Json(new { success = false });
         }
 
+        [HttpPost]
+        public JsonResult UpdateSubject(Subject subject)
+        {
+            using (var db = new Entities())
+            {
+                var subjectUpdated = db.Subjects.Find(subject.SubjectId);
+
+                if (subjectUpdated == null)
+                {
+                    return Json(new { success = false });
+                }
+
+                else
+                {
+                    subjectUpdated.Name = subject.Name;
+                    subjectUpdated.CourseId = subject.CourseId;
+
+                    db.SaveChanges();
+                    return Json(new { success = true });
+                }
+            }
+        }
+
+        [HttpPost]
+        public JsonResult DeleteSubject(int id)
+        {
+            using (var db = new Entities())
+            {
+                var subject = db.Subjects.Find(id);
+                if (subject == null)
+                {
+                    return Json(new { success = false });
+                }
+
+                db.Subjects.Remove(subject);
+                db.SaveChanges();
+
+                return Json(new { success = true });
+            }
+        }
     }
 }

@@ -19,9 +19,10 @@
 
         var grade = {
             gradeId: $scope.gradeId,
-            name: $scope.name,
-            birthday: $scope.birthday,
-            salary: $scope.salary,
+            studentId: $scope.studentId,
+            gradeDescription: $scope.gradeDescription,
+            subjectId: $scope.subjectId,
+            courseId: $scope.courseId,
         };
 
         var addInfos = gradeService.addGrade(grade);
@@ -29,13 +30,13 @@
         addInfos.then(function (d) {
             if (d.data.success === true) {
                 loadGrades();
-                alert("Teacher added succesfuly!");
+                alert("Grade added succesfuly!");
 
                 $scope.clearData();
-            } else { alert("Teacher wasn't added!"); }
+            } else { alert("Grade wasn't added!"); }
         },
             function () {
-                alert("Ocorreu um erro ao tentar adicionar um Novo Funcionário!");
+                alert("Ocorreu um erro ao tentar adicionar um Novo grade!");
             });
     }
 
@@ -46,24 +47,24 @@
         $scope.salary = "";
     }
 
-    $scope.updateTeacherById = function (teacher) {
-        $scope.UpdatedTeacherId = teacher.TeacherId,
-            $scope.UpdatedName = teacher.Name;
-        $scope.UpdatedBirthday = teacher.Birthday;
-        $scope.UpdatedSalary = teacher.Salary;
+    $scope.updateGradeById = function (grade) {
+        $scope.UpdatedGradeId = grade.GradeId;
+        $scope.UpdatedSubjectId = grade.SubjectId;
+        $scope.UpdatedStudentId = grade.StudentId;
+        $scope.UpdatedGradeDescription = grade.GradeDescription;
     }
 
-    $scope.updateTeacher = function () {
-        var teacher = {
-            TeacherId: $scope.UpdatedTeacherId,
-            Name: $scope.UpdatedName,
-            Birthday: $scope.UpdatedBirthday,
-            Salary: $scope.UpdatedSalary,
+    $scope.updateGrade = function () {
+        var grade = {
+            GradeId: $scope.UpdatedGradeId,
+            GradeDescription: $scope.UpdatedGradeDescription,
+            StudentId: $scope.UpdatedStudentId,
+            SubjectId: $scope.UpdatedSubjectId,
         };
-        var refreshInfos = teacherService.updateTeacher(teacher);
+        var refreshInfos = gradeService.updateGrade(grade);
         refreshInfos.then(function (d) {
             if (d.data.success === true) {
-                loadTeachers();
+                loadGrades();
                 alert("Funcionario Atualizado com Sucesso!");
                 $scope.clearUpdatedData();
             }
@@ -83,18 +84,18 @@
         $scope.UpdatedSalary = '';
     }
 
-    $scope.deleteTeacherById = function (teacher) {
-        $scope.UpdatedTeacherId = teacher.TeacherId;
-        $scope.UpdatedName = teacher.Name;
+    $scope.deleteGradeById = function (grade) {
+        $scope.UpdatedGradeId = grade.GradeId;
+        $scope.UpdatedStudentId = grade.StudentId;
     }
 
-    $scope.deleteTeacher = function (UpdatedTeacherId) {
+    $scope.deleteGrade = function (UpdatedGradeId) {
 
-        var deleteInfos = teacherService.deleteTeacher($scope.UpdatedTeacherId);
+        var deleteInfos = gradeService.deleteGrade($scope.UpdatedGradeId);
         deleteInfos.then(function (d) {
 
             if (d.data.success === true) {
-                loadTeachers();
+                loadGrades();
 
                 alert("Funcionário excluído com Sucesso!");
             }

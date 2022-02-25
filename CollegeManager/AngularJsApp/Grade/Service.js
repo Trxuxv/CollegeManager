@@ -4,29 +4,29 @@
         return $http.get("/Grade/GetGrades");
     }
 
-    this.addGrade = function (teacher) {
+    this.addGrade = function (grade) {
 
         var request = $http({
             method: 'post',
             url: '/Grade/AddGrade',
-            data: teacher
+            data: grade
         });
 
         return request;
     }
 
-    this.updateTeacher = function (teacher) {
+    this.updateGrade = function (grade) {
 
         var updatedRequest = $http({
             method: 'post',
-            url: '/Teacher/UpdateTeacher',
-            data: teacher
+            url: '/Grade/UpdateGrade',
+            data: grade
         });
         return updatedRequest;
     }
 
-    this.deleteTeacher = function (UpdatedTeacherId) {
+    this.deleteGrade = function (UpdatedGradeId) {
 
-        return $http.post('/Teacher/DeleteTeacher/' + UpdatedTeacherId);
+        return $http.post('/Grade/DeleteGrade/' + UpdatedGradeId);
     }
 });

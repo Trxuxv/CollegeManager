@@ -79,8 +79,8 @@
     }
 
     $scope.deleteSubjectById = function (subject) {
-        $scope.UpdatedSubjectId = course.SubjectId;
-        $scope.UpdatedName = course.Name;
+        $scope.UpdatedSubjectId = subject.SubjectId;
+        $scope.UpdatedName = subject.Name;
     }
 
     $scope.deleteSubject = function (UpdatedSubjectId) {
@@ -89,7 +89,7 @@
         deleteInfos.then(function (d) {
 
             if (d.data.success === true) {
-                loadCourses();
+                loadSubjects();
 
                 alert("Subject deleted successfuly!");
             }

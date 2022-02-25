@@ -7,6 +7,8 @@
             </button>
             <input id="search" shadow-none ng-model="test" style="background: #0a0d12; height: 30px; margin-left: 10em; width: 100%; border: none; padding: 1.5%; " placeholder="Search for a grades..." type="text" />
         </div>
+
+        @*LIST*@
         <table class="table" style="background: #0d1117; color: #8B949E; border: 0.2px solid #161b22; ">
             <thead style="background-color: #161b22; border: none; color: white; ">
                 <tr>
@@ -28,10 +30,10 @@
                     <td class="text-center">{{t.CourseName}}</td>
                     <td class="text-center">{{t.CourseNameTeacher}}</td>
                     <td class="text-center" style="width: 150px; padding: 0.5%;">
-                        <a href="#" style="border-radius: 25px; padding: 0.3em 0.6em; margin-right: 0.5em;" data-target="#UpdateTeacher" data-toggle="modal" class="btn btn-success" ng-click="updateTeacherById(t)">
+                        <a href="#" style="border-radius: 25px; padding: 0.3em 0.6em; margin-right: 0.5em;" data-target="#UpdateTeacher" data-toggle="modal" class="btn btn-success" ng-click="updateGradeById(t)">
                             <span class="glyphicon glyphicon-pencil"></span>
                         </a>
-                        <a href="#" style="border-radius: 25px; padding: 0.3em 0.6em; margin-right: 0.5em;" data-target="#DeleteTeacher" id="btnDelete" data-toggle="modal" class="btn btn-danger" ng-click="deleteTeacherById(t)">
+                        <a href="#" style="border-radius: 25px; padding: 0.3em 0.6em; margin-right: 0.5em;" data-target="#DeleteTeacher" id="btnDelete" data-toggle="modal" class="btn btn-danger" ng-click="deleteGradeById(t)">
                             <span class="glyphicon glyphicon-trash"></span>
                         </a>
                     </td>
@@ -39,6 +41,7 @@
             </tbody>
         </table>
 
+        @*ADD GRADE*@
         <div class="modal" id="AdicionarFuncionario" role="dialog" style="width: 100%; padding-top: 12rem;">
             <div class="modal-dialog" style="width: 40%; margin-top: 4%;">
                 <div class="modal-content" style="background: #0d1117;">
@@ -52,23 +55,28 @@
                             </div>
 
                             <div class="form-group">
-                                <input class="form-control" type="text" name="nome" ng-model="student" placeholder="Student" style="width:100%;" />
+                                <input class="form-control" type="text" name="nome" ng-model="studentId" placeholder="Student ID" style="width:100%;" />
                             </div>
                             <div class="form-group">
-                                <input class="form-control" type="text" name="grade" ng-model="grade" placeholder="Grade" />
+                                <input class="form-control" type="text" name="grade" ng-model="gradeDescription" placeholder="Grade" />
                             </div>
                             <div class="form-group">
-                                <input class="form-control" type="text" name="nome" ng-model="subject" placeholder="Subject" />
+                                <input class="form-control" type="text" name="nome" ng-model="subjectId" placeholder="Subject ID" />
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" type="text" name="nome" ng-model="courseId" placeholder="Course ID" />
                             </div>
                         </form>
                     </div>
                     <div class="modal-footer" style="border: none;">
-                        <button type="button" class="btn btn-primary" id="btnSalvar" data-dismiss="modal" ng-click="addTeacher()">Confirm</button>
+                        <button type="button" class="btn btn-primary" id="btnSalvar" data-dismiss="modal" ng-click="addGrade()">Confirm</button>
                         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clearData()">Close</button>
                     </div>
                 </div>
             </div>
         </div>
+
+        @*UPDATE GRADE*@
         <div class="modal" id="UpdateTeacher" role="dialog" style="width: 100%; margin-top: 12rem;">
             <div class="modal-dialog" style="width: 40%; margin-top: 4%;">
                 <div class="modal-content" style="background: #0d1117; color: whitesmoke;">
@@ -78,21 +86,21 @@
                     <div class="modal-body" style="margin-left: 20px">
                         <form class="form-horizontal" name="AtualizarForm">
                             <div class="form-group">
-                                <input class="form-control" readonly="readonly" name="TeacherId" ng-model="UpdatedTeacherId" type="hidden" placeholder="TeacherId" />
+                                <input class="form-control" readonly="readonly" name="TeacherId" ng-model="UpdatedGradeId" type="hidden" placeholder="TeacherId" />
                             </div>
                             <div class="form-group">
-                                <input class="form-control" name="Name" ng-model="UpdatedName" type="text" placeholder="Student" />
+                                <input class="form-control" name="Name" ng-model="UpdatedStudentId" type="text" placeholder="Student ID" />
                             </div>
                             <div class="form-group">
-                                <input class="form-control" name="Birthday" ng-model="UpdatedBirthday" type="text" placeholder="Grade" />
+                                <input class="form-control" name="Birthday" ng-model="UpdatedGradeDescription" type="text" placeholder="Grade" />
                             </div>
                             <div class="form-group">
-                                <input class="form-control" name="Salary" ng-model="UpdatedSalary" type="text" placeholder="Subject" />
+                                <input class="form-control" name="Salary" ng-model="UpdatedSubjectId" type="text" placeholder="Subject ID" />
                             </div>
                         </form>
                     </div>
                     <div class="modal-footer" style="border: none;">
-                        <button type="button" class="btn btn-primary" id="btnUpdate" data-dismiss="modal" ng-click="updateTeacher()">
+                        <button type="button" class="btn btn-primary" id="btnUpdate" data-dismiss="modal" ng-click="updateGrade()">
                             Update
                         </button>
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -100,6 +108,8 @@
                 </div>
             </div>
         </div>
+        
+        @*DELETE GRADE*@
         <div class="modal" role="dialog" id="DeleteTeacher" style="padding-top: 13em;">
             <div class="modal-dialog">
                 <div class="modal-content" style="background: #0d1117;">
@@ -108,17 +118,18 @@
                     </div>
                     <div class="modal-body">
                         <div style="color: white; text-align: center;">
-                            <p>ID: {{UpdatedTeacherId}}</p>
-                            <p>Teacher's name: {{UpdatedName}}</p>
+                            <p>Grade ID: {{UpdatedGradeId}}</p>
+                            <p>Student's ID: {{UpdatedStudentId}}</p>
                         </div>
                     </div>
                     <div class="modal-footer" style="border: none;">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="deleteTeacher(UpdatedTeacherId)">Delete</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="deleteGrade(UpdatedGradeId)">Delete</button>
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>
         </div>
+    
     </div>
 </div>
 
