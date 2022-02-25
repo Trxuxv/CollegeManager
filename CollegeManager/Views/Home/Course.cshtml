@@ -1,14 +1,14 @@
-﻿<div ng-if="a= true" class="alert alert-success" role="alert" style="width: 70%; margin: auto; text-align:center;">
+﻿@*<div ng-if="a= true" class="alert alert-success" role="alert" style="width: 70%; margin: auto; text-align:center;">
     This is a success alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
 </div>
 <div class="alert alert-danger" role="alert" style="width: 70%; margin: auto; text-align:center;">
     This is a danger alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
-</div>
-<div class="container" ng-app="courses" ng-controller="courseCtrl" style="width: 70%; height: 75rem; background-color: #0d1117; padding:1%;">
+</div>*@
+<div class="container" ng-app="courses" ng-controller="courseCtrl" style="width: 80%; height: 75rem;  background-color: #0d1117; border-radius: 10px; padding: 1.3% 0.2% 0.2% 1%; overflow-y: scroll;">
     <div class="panel" style="border: none; background: #161b22;">
         <div class="panel-heading" style="border: none; background: #161b22; color: #C9D1D9;">Courses</div>
         <div class="panel-body" style="background: #0d1117; color: #8B949E;">
-            <button type="button" class="btn btn-primary"  data-target="#AdicionarFuncionario" data-toggle="modal" style="border-radius: 25px; width: 38px;">
+            <button type="button" class="btn btn-primary" data-target="#AdicionarFuncionario" data-toggle="modal" style="border-radius: 25px; width: 38px;">
                 <span class="glyphicon glyphicon-plus"></span>
             </button>
         </div>
@@ -29,7 +29,7 @@
                     <td class="text-center">{{c.Name}}</td>
                     <td class="text-center">{{c.Duration}}y</td>
                     <td class="text-center">{{c.Category}}</td>
-                    <td class="text-center">{{c.TeacherId}}</td>
+                    <td class="text-center">{{c.TeacherName}}</td>
 
                     <td class="text-center" style="width: 150px; padding: 0.5%;">
                         <a href="#" style="border-radius: 25px; padding: 0.3em 0.6em; margin-right: 0.5em;"
@@ -48,102 +48,102 @@
                     </td>
                 </tr>
             </tbody>
-    </table>
+        </table>
 
-    <div class="modal" id="AdicionarFuncionario" role="dialog" style="width: 100%; padding-top: 8rem;">
-        <div class="modal-dialog" style="width: 40%; margin-top: 4%;">
-            <div class="modal-content" style="background: #0d1117;">
-                <div class="modal-header">
-                    <h3 style="color: #C9D1D9;">New Course</h3>
-                </div>
-                <div class="modal-body">
-                    <form class="form-horizontal" name="AdicionarNovoFuncionarioForm">
-                        <div class="form-group" style="width: 100%; background: green;">
-                            <input class="form-control" readonly="readonly" name="funcionarioId" type="hidden" placeholder="Id Funcionário" style="margin: auto; min-width: 300px;" />
-                        </div>
+        <div class="modal" id="AdicionarFuncionario" role="dialog" style="width: 100%; padding-top: 8rem;">
+            <div class="modal-dialog" style="width: 40%; margin-top: 4%;">
+                <div class="modal-content" style="background: #0d1117;">
+                    <div class="modal-header">
+                        <h3 style="color: #C9D1D9;">New Course</h3>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal" name="AdicionarNovoFuncionarioForm">
+                            <div class="form-group" style="width: 100%; background: green;">
+                                <input class="form-control" readonly="readonly" name="funcionarioId" type="hidden" placeholder="Id Funcionário" style="margin: auto; min-width: 300px;" />
+                            </div>
 
-                        <div class="form-group">
-                            <input class="form-control" type="text" name="nome" ng-model="name" placeholder="Description" style="width:100%;" />
-                        </div>
-                        <div class="form-group">
-                            <input class="form-control" type="text" name="nome" ng-model="duration" placeholder="Duration (Years)" />
-                        </div>
-                        <div class="form-group">
-                            <input class="form-control" type="text" name="nome" ng-model="category" placeholder="Category" />
-                        </div>
-                        <div class="form-group">
-                            <input class="form-control" type="text" name="nome" ng-model="teacherId" placeholder="Teacher" />
-                        </div>
-                        <select class="form-control" ng-model="teacherId" required>
-                            <option ng-repeat="c in Teachers" value="{{c.TeacherId}}">{{c.Name}}</option>
-                        </select>
-                    </form>
-                </div>
-                <div class="modal-footer" style="border: none;">
-                    <button type="button" class="btn btn-primary" id="btnSalvar" data-dismiss="modal" ng-click="addCourse()">Confirm</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="limparDados()">Cancel</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="modal" id="AtualizarFuncionario" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h3 class="text-info">Update Course</h3>
-                </div>
-                <div class="modal-body" style="margin-left: 20px">
-                    <form class="form-horizontal" name="AtualizarForm">
-                        <div class="form-group">
-                            <input class="form-control" readonly="readonly" name="FuncionarioId" ng-model="AtualizadoFuncionarioId" type="hidden" placeholder="Funcionario Id" />
-                        </div>
-                        <div class="form-group">
-                            <label class="text-info"> Nome</label>
-                            <input class="form-control" name="Nome" ng-model="AtualizadoNome" type="text" placeholder="Nome" />
-                        </div>
-                        <div class="form-group">
-                            <label class="text-info"> Email</label>
-                            <input class="form-control" name="Email" ng-model="AtualizadoEmail" type="email" placeholder="Email" />
-                        </div>
-                        <div class="form-group">
-                            <label class="text-info"> Departamento</label>
-                            <input class="form-control" name="Departamento" ng-model="AtualizadoDepartamento" type="text" placeholder="Departamento" />
-                        </div>
-                        <div class="form-group">
-                            <label class="text-info"> Cargo</label>
-                            <input class="form-control" name="Cargo" ng-model="AtualizadoCargo" type="text" placeholder="Cargo" />
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" id="btnUpdate" data-dismiss="modal" ng-click="atualizarFuncionario()">
-                        Atualizar
-                    </button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="modal" role="dialog" id="ExcluirFuncionario">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h3 class="text-info">Você tem certeza que deseja excluir o Funcionário?</h3>
-                </div>
-                <div class="modal-body">
-                    <div>
-                        <p>Id do Funcionário : {{AtualizadoFuncionarioId}}</p>
-                        <p>Nome do Fucionário : {{AtualizadoNome}}</p>
+                            <div class="form-group">
+                                <input class="form-control" type="text" name="nome" ng-model="name" placeholder="Description" style="width:100%;" />
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" type="text" name="nome" ng-model="duration" placeholder="Duration (Years)" />
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" type="text" name="nome" ng-model="category" placeholder="Category" />
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" type="text" name="nome" ng-model="teacherId" placeholder="Teacher" />
+                            </div>
+                            <select class="form-control" ng-model="teacherId" required>
+                                <option ng-repeat="c in Teachers" value="{{c.TeacherId}}">{{c.Name}}</option>
+                            </select>
+                        </form>
+                    </div>
+                    <div class="modal-footer" style="border: none;">
+                        <button type="button" class="btn btn-primary" id="btnSalvar" data-dismiss="modal" ng-click="addCourse()">Confirm</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="limparDados()">Cancel</button>
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="excluirFuncionario(AtualizadoFuncionarioId)">Excluir</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+        <div class="modal" id="AtualizarFuncionario" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="text-info">Update Course</h3>
+                    </div>
+                    <div class="modal-body" style="margin-left: 20px">
+                        <form class="form-horizontal" name="AtualizarForm">
+                            <div class="form-group">
+                                <input class="form-control" readonly="readonly" name="FuncionarioId" ng-model="AtualizadoFuncionarioId" type="hidden" placeholder="Funcionario Id" />
+                            </div>
+                            <div class="form-group">
+                                <label class="text-info"> Nome</label>
+                                <input class="form-control" name="Nome" ng-model="AtualizadoNome" type="text" placeholder="Nome" />
+                            </div>
+                            <div class="form-group">
+                                <label class="text-info"> Email</label>
+                                <input class="form-control" name="Email" ng-model="AtualizadoEmail" type="email" placeholder="Email" />
+                            </div>
+                            <div class="form-group">
+                                <label class="text-info"> Departamento</label>
+                                <input class="form-control" name="Departamento" ng-model="AtualizadoDepartamento" type="text" placeholder="Departamento" />
+                            </div>
+                            <div class="form-group">
+                                <label class="text-info"> Cargo</label>
+                                <input class="form-control" name="Cargo" ng-model="AtualizadoCargo" type="text" placeholder="Cargo" />
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" id="btnUpdate" data-dismiss="modal" ng-click="atualizarFuncionario()">
+                            Atualizar
+                        </button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal" role="dialog" id="ExcluirFuncionario">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="text-info">Você tem certeza que deseja excluir o Funcionário?</h3>
+                    </div>
+                    <div class="modal-body">
+                        <div>
+                            <p>Id do Funcionário : {{AtualizadoFuncionarioId}}</p>
+                            <p>Nome do Fucionário : {{AtualizadoNome}}</p>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="excluirFuncionario(AtualizadoFuncionarioId)">Excluir</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 </div>
 
 
@@ -154,19 +154,36 @@
 }
 
 <style>
+
+    ::-webkit-scrollbar {
+        width: 12px;
+    }
+
+    ::-webkit-scrollbar-track {
+        border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: #161b22;
+        border-radius: 10px;
+    }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: green;
+        }
+
     .form-group {
         width: 100%;
     }
 
-    input, select {
-        border-radius: 25px !important;
+    input {
         min-width: 70%;
         margin: auto;
+        border-radius: 25px !important;
     }
 
     td {
-        border: none;
-        font-size: 0.9em;
+        border: 0.5px solid #161b22;
         height: 5rem !important;
         padding-top: 1.6em !important;
     }
@@ -177,5 +194,19 @@
 
     th {
         font-weight: 300;
+    }
+
+    label {
+        color: whitesmoke !important;
+        font-weight: 300;
+        font-size: 0.9em !important;
+        margin-left: 6.1em;
+    }
+
+    select {
+        min-width: 70%;
+        margin: auto;
+        width: 100%;
+        border-radius: 25px !important;
     }
 </style>

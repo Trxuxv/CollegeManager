@@ -1,9 +1,9 @@
-﻿<div class="container" ng-app="subjects" ng-controller="subjectCtrl" style="width: 70%; height: 75rem; background-color: #0d1117; padding:1%;">
+﻿<div class="container" ng-app="subjects" ng-controller="subjectCtrl" style="width: 80%; height: 75rem;  background-color: #0d1117; border-radius: 10px; padding: 1.3% 0.2% 0.2% 1%; overflow-y: scroll;">
     <div class="panel" style="border: none; background: #161b22 ">
         <div class="panel-heading" style="border: none; background: #161b22; color: #C9D1D9;">Subjects</div>
 
         <div class="panel-body" style="background: #0d1117; color: #161b22;">
-            <button type="button" class="btn btn-primary"  data-target="#AdicionarFuncionario" data-toggle="modal" style="border-radius: 25px; width: 38px;">
+            <button type="button" class="btn btn-primary" data-target="#AdicionarFuncionario" data-toggle="modal" style="border-radius: 25px; width: 38px;">
                 <span class="glyphicon glyphicon-plus"></span>
             </button>
         </div>
@@ -13,30 +13,29 @@
                 <tr>
                     <th class="text-center" style="border-bottom: 0.5px solid #161b22">ID</th>
                     <th class="text-center" style="border-bottom: 0.5px solid #161b22">Name</th>
-                    <th class="text-center" style="border-bottom: 0.5px solid #161b22">CourseId</th>
-                    <th class="text-center" style="border-bottom: 0.5px solid #161b22">Approved</th>
+                    <th class="text-center" style="border-bottom: 0.5px solid #161b22">Course</th>
                     <th class="text-center" style="border-bottom: 0.5px solid #161b22">Actions</th>
                 </tr>
             </thead>
 
             <tbody style="background: #0d1117; color: #8B949E; border: 0.2px solid #161b22; ">
-                <tr ng-repeat="c in Subjects">
-                    <td class="text-center">{{c.SubjectId}}</td>
-                    <td class="text-center">{{c.Name}}</td>
-                    <td class="text-center">{{c.CourseId}}</td>
-                    <td class="text-center">{{c.Approved}}</td>
+                <tr ng-repeat="s in Subjects">
+                    <td class="text-center">{{s.SubjectId}}</td>
+                    <td class="text-center">{{s.Name}}</td>
+                    <td class="text-center">{{s.CourseName}}</td>
+                    @*<td class="text-center">{{s.Approved}}</td>*@
                     <td class="text-center" style="width: 150px; padding: 0.5%;">
                         <a href="#" style="border-radius: 25px; padding: 0.3em 0.6em; margin-right: 0.5em;"
                            data-target="#AtualizarFuncionario"
                            data-toggle="modal" class="btn btn-success"
-                           ng-click="atualizarFuncionarioPorId(func)">
+                           ng-click="atualizarFuncionarioPorId(s)">
                             <span class="glyphicon glyphicon-pencil"></span>
                         </a>
                         <a href="#" style="border-radius: 25px; padding: 0.3em 0.6em; margin-right: 0.5em;"
                            data-target="#ExcluirFuncionario"
                            id="btnExcluir"
                            data-toggle="modal" class="btn btn-danger"
-                           ng-click="excluirFuncionarioPorId(func)">
+                           ng-click="excluirFuncionarioPorId(s)">
                             <span class="glyphicon glyphicon-trash"></span>
                         </a>
                     </td>
@@ -56,14 +55,17 @@
                             </div>
 
                             <div class="form-group">
-                                <input class="form-control" type="text" name="nome" ng-model="description" placeholder="Description" style="width:100%;" />
+                                <input class="form-control" type="text" name="nome" ng-model="name" placeholder="Name" style="width:100%;" />
                             </div>
                             <div class="form-group">
-                                <input class="form-control" type="text" name="nome" ng-model="duration" placeholder="Duration" />
+                                <select name="courseId" id="singleSelect">
+                                    <option value="{{s.CourseId}}">{{s.Name}}</option>
+                                </select>
+                                @*<input class="form-control" type="text" name="nome" ng-model="courseId" placeholder="Course" />*@
                             </div>
-                            <div class="form-group">
-                                <input class="form-control" type="text" name="nome" ng-model="minGrade" placeholder="Min. Grade" />
-                            </div>
+                            @*@<div class="form-group">
+                                    <input class="form-control" type="text" name="nome" ng-model="minGrade" placeholder="Min. Grade" />
+                                </div>*@
                         </form>
                     </div>
                     <div class="modal-footer" style="border: none;">
@@ -111,10 +113,6 @@
                 </div>
             </div>
         </div>
-        @* FIM MODAL - ATUALIZAR FUNCIONÁRIO *@
-
-        @* INÍCIO MODAL - EXCLUIR FUNCIONÁRIO *@
-
         <div class="modal" role="dialog" id="ExcluirFuncionario">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -134,21 +132,37 @@
                 </div>
             </div>
         </div>
-
-        @* FIM MODAL - EXCLUIR FUNCIONÁRIO *@
-
     </div>
-    @* FIM DIV - panel panel-info *@
-
 </div>
 
 @section scripts {
     <script src="~/AngularJsApp/Subject/Module.js"></script>
     <script src="~/AngularJsApp/Subject/Service.js"></script>
     <script src="~/AngularJsApp/Subject/Controller.js"></script>
+    <script src="~/AngularJsApp/Courses/Module.js"></script>
+    <script src="~/AngularJsApp/Courses/Service.js"></script>
+    <script src="~/AngularJsApp/Courses/Controller.js"></script>
 }
 
 <style>
+
+    ::-webkit-scrollbar {
+        width: 12px;
+    }
+
+    ::-webkit-scrollbar-track {
+        border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: #161b22;
+        border-radius: 10px;
+    }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: green;
+        }
+
     .form-group {
         width: 100%;
     }
@@ -156,11 +170,11 @@
     input {
         min-width: 70%;
         margin: auto;
+        border-radius: 25px !important;
     }
 
     td {
-        border: none;
-        font-size: 0.9em;
+        border: 0.5px solid #161b22;
         height: 5rem !important;
         padding-top: 1.6em !important;
     }
@@ -171,5 +185,19 @@
 
     th {
         font-weight: 300;
+    }
+
+    label {
+        color: whitesmoke !important;
+        font-weight: 300;
+        font-size: 0.9em !important;
+        margin-left: 6.1em;
+    }
+
+    select {
+        min-width: 70%;
+        margin: auto;
+        width: 100%;
+        border-radius: 25px !important;
     }
 </style>

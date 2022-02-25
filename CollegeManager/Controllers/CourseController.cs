@@ -1,6 +1,7 @@
 ﻿using CollegeManager.Models;
 using System.Web.Mvc;
 using System.Linq;
+using CollegeManager.Models.CoursesModels;
 
 namespace CollegeManager.Controllers
 {
@@ -10,7 +11,15 @@ namespace CollegeManager.Controllers
         {
             using (var db = new CollegeEntities())
             {
-                var listCourses = db.Courses.ToList();
+                var listCourses = db.Courses.Select(x => new CourseModel
+                {
+                    CourseId = x.CourseId,
+                    Name = x.Name,
+                    Category = x.Category,
+                    Duration = x.Duration,
+                    TeacherId = x.TeacherId,
+                    TeacherName = x.Teacher.Name
+                }).ToList();
 
                 return Json(listCourses, JsonRequestBehavior.AllowGet);
             }
@@ -46,7 +55,7 @@ namespace CollegeManager.Controllers
 
                 else
                 {
-                    funcionarioAtualizado.Name = funcionario.Name   ;
+                    funcionarioAtualizado.Name = funcionario.Name;
                     //funcionarioAtualizado.Departamento = funcionario.Departamento;
                     //funcionarioAtualizado.Cargo = funcionario.Cargo;
                     //funcionarioAtualizado.Email = funcionario.Email;

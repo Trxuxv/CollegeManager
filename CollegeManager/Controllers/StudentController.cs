@@ -1,4 +1,5 @@
 ﻿using CollegeManager.Models;
+using CollegeManager.Models.StudentsModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,21 +19,17 @@ namespace CollegeManager.Controllers
         [HttpGet]
         public JsonResult GetStudents()
         {
-
             using (var db = new CollegeEntities())
             {
-                var listStudents = new List<Student>();
-
-                try
+                var listStudents = db.Students.Select(x => new StudentModel
                 {
-                    listStudents = db.Students.ToList();
-
-                }
-                catch (System.Exception e)
-                {
-
-                    throw e;
-                }
+                    StudentId = x.StudentId,
+                    Name = x.Name,
+                    CourseName = x.Course.Name,
+                    CourseId = x.CourseId,
+                    Birthday = x.Birthday,
+                    RgNumber = x.RgNumber
+                }).ToList();
 
                 return Json(listStudents, JsonRequestBehavior.AllowGet);
             }
@@ -53,6 +50,5 @@ namespace CollegeManager.Controllers
             }
             return Json(new { success = false });
         }
-
     }
 }

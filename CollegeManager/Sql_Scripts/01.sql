@@ -1,2 +1,12 @@
 ﻿ALTER TABLE Student 
 ADD CourseId INT NOT NULL REFERENCES Course(CourseId)
+
+
+
+ALTER TABLE Grade
+ADD StudentId INT FOREIGN KEY REFERENCES Student(StudentId),
+	SubjectId INT FOREIGN KEY REFERENCES Subject(SubjectId)
+
+
+ALTER TABLE Grade
+ADD CourseId INT FOREIGN KEY REFERENCES Course(CourseId)

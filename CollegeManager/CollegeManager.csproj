@@ -153,15 +153,18 @@
     <Compile Include="Models\Course.cs">
       <DependentUpon>Context.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\CoursesModels\CourseModel.cs" />
     <Compile Include="Models\Grade.cs">
       <DependentUpon>Context.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Student.cs">
       <DependentUpon>Context.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\StudentsModels\StudentModel.cs" />
     <Compile Include="Models\Subject.cs">
       <DependentUpon>Context.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\SubjectsModels\SubjectModel.cs" />
     <Compile Include="Models\sysdiagram.cs">
       <DependentUpon>Context.tt</DependentUpon>
     </Compile>
@@ -249,10 +252,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Sql_Scripts\" />
-    <Folder Include="Views\Course\" />
-    <Folder Include="Views\Grade\" />
-    <Folder Include="Views\Student\" />
-    <Folder Include="Views\Subject\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

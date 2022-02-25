@@ -21,9 +21,8 @@ namespace CollegeManager.Controllers
                 var listTeachers = new List<Teacher>();
 
                 try
-                {
+                {   
                     listTeachers = db.Teachers.ToList();
-
                 }
                 catch (System.Exception e)
                 {
