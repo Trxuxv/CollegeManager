@@ -13,10 +13,10 @@ namespace CollegeManager.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class CollegeEntities : DbContext
+    public partial class Entities : DbContext
     {
-        public CollegeEntities()
-            : base("name=CollegeEntities")
+        public Entities()
+            : base("name=Entities")
         {
             this.Configuration.LazyLoadingEnabled = false;
         }

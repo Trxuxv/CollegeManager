@@ -1,37 +1,32 @@
-﻿teacherApp.service('teacherService', function ($http) {
+﻿gradeApp.service('gradeService', function ($http) {
 
-    //Método responsável por Listar todos os Funcionários: READ
-    this.getAllTeachers = function () {
-
-        return $http.get("/Teacher/GetFuncionario");
+    this.getAllGrades = function () {
+        return $http.get("/Grade/GetGrades");
     }
 
-    //Método responsável por Adicionar Funcionário: CREATE
-    this.addCourse = function (course) {
+    this.addGrade = function (teacher) {
 
         var request = $http({
             method: 'post',
-            url: '/Course/AddCourse',
-            data: course
+            url: '/Grade/AddGrade',
+            data: teacher
         });
 
         return request;
     }
 
-    //Método responsável por Atualizar Funcionário Por Id: Update
-    this.atualizarFuncionario = function (course) {
+    this.updateTeacher = function (teacher) {
 
-        var requestAtualizado = $http({
+        var updatedRequest = $http({
             method: 'post',
-            url: '/Course/AtualizarFuncionario',
-            data: course
+            url: '/Teacher/UpdateTeacher',
+            data: teacher
         });
-        return requestAtualizado;
+        return updatedRequest;
     }
 
-    //Método responsável por Excluir Funcionário Por Id: Delete
-    this.excluirFuncionario = function (AtualizadoFuncionarioId) {
+    this.deleteTeacher = function (UpdatedTeacherId) {
 
-        return $http.post('/Course/ExcluirFuncionario/' + AtualizadoFuncionarioId);
+        return $http.post('/Teacher/DeleteTeacher/' + UpdatedTeacherId);
     }
 });

@@ -14,10 +14,17 @@ namespace CollegeManager.Models
     
     public partial class Subject
     {
+        public Subject()
+        {
+            this.Grades = new HashSet<Grade>();
+        }
+    
         public int SubjectId { get; set; }
         public string Name { get; set; }
         public int CourseId { get; set; }
         public bool Approved { get; set; }
+    
         public virtual Course Course { get; set; }
+        public virtual ICollection<Grade> Grades { get; set; }
     }
 }

@@ -2,6 +2,6 @@
 
 (function () {
 
-    gradeApp = angular.module('grade', []);
+    gradeApp = angular.module('grades', []);
 
 })();

@@ -14,6 +14,11 @@ namespace CollegeManager.Models
     
     public partial class Student
     {
+        public Student()
+        {
+            this.Grades = new HashSet<Grade>();
+        }
+    
         public int StudentId { get; set; }
         public string Name { get; set; }
         public int RgNumber { get; set; }
@@ -21,5 +26,6 @@ namespace CollegeManager.Models
         public int CourseId { get; set; }
     
         public virtual Course Course { get; set; }
+        public virtual ICollection<Grade> Grades { get; set; }
     }
 }

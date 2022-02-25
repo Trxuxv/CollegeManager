@@ -16,6 +16,7 @@ namespace CollegeManager.Models
     {
         public Course()
         {
+            this.Grades = new HashSet<Grade>();
             this.Students = new HashSet<Student>();
             this.Subjects = new HashSet<Subject>();
         }
@@ -27,6 +28,7 @@ namespace CollegeManager.Models
         public int TeacherId { get; set; }
     
         public virtual Teacher Teacher { get; set; }
+        public virtual ICollection<Grade> Grades { get; set; }
         public virtual ICollection<Student> Students { get; set; }
         public virtual ICollection<Subject> Subjects { get; set; }
     }

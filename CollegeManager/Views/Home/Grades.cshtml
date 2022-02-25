@@ -20,13 +20,13 @@
                 </tr>
             </thead>
             <tbody style="color: #8B949E; border: 0.2px solid #161b22;  ">
-                <tr ng-repeat="t in Teachers | filter:test">
-                    <td class="text-center" style="border-right: 0.5px solid #161b22 !important;">{{t.TeacherId}}</td>
-                    <td class="text-center">{{t.Name}}</td>
-                    <td class="text-center">{{t.Birthday | date }}</td>
-                    <td class="text-center">{{t.Salary  }}</td>
-                    <td class="text-center">{{t.Salary  }}</td>
-                    <td class="text-center">{{t.Salary  }}</td>
+                <tr ng-repeat="t in Grades | filter:test">
+                    <td class="text-center" style="border-right: 0.5px solid #161b22 !important;">{{t.GradeId}}</td>
+                    <td class="text-center">{{t.GradeDescription}}</td>
+                    <td class="text-center">{{t.StudentName}}</td>
+                    <td class="text-center">{{t.SubjectName}}</td>
+                    <td class="text-center">{{t.CourseName}}</td>
+                    <td class="text-center">{{t.CourseNameTeacher}}</td>
                     <td class="text-center" style="width: 150px; padding: 0.5%;">
                         <a href="#" style="border-radius: 25px; padding: 0.3em 0.6em; margin-right: 0.5em;" data-target="#UpdateTeacher" data-toggle="modal" class="btn btn-success" ng-click="updateTeacherById(t)">
                             <span class="glyphicon glyphicon-pencil"></span>

@@ -16,5 +16,12 @@ namespace CollegeManager.Models
     {
         public int GradeId { get; set; }
         public int GradeDescription { get; set; }
+        public Nullable<int> StudentId { get; set; }
+        public Nullable<int> SubjectId { get; set; }
+        public Nullable<int> CourseId { get; set; }
+    
+        public virtual Course Course { get; set; }
+        public virtual Student Student { get; set; }
+        public virtual Subject Subject { get; set; }
     }
 }

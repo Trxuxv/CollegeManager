@@ -19,7 +19,7 @@ namespace CollegeManager.Controllers
         [HttpGet]
         public JsonResult GetStudents()
         {
-            using (var db = new CollegeEntities())
+            using (var db = new Entities())
             {
                 var listStudents = db.Students.Select(x => new StudentModel
                 {
@@ -40,7 +40,7 @@ namespace CollegeManager.Controllers
         {
             if (student != null)
             {
-                using (var db = new CollegeEntities())
+                using (var db = new Entities())
                 {
                     db.Students.Add(student);
                     db.SaveChanges();

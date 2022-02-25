@@ -21,7 +21,7 @@ namespace CollegeManager.Models
     
         public int TeacherId { get; set; }
         public string Name { get; set; }
-        public Nullable<DateTime> Birthday { get; set; }
+        public Nullable<System.DateTime> Birthday { get; set; }
         public Nullable<double> Salary { get; set; }
     
         public virtual ICollection<Course> Courses { get; set; }

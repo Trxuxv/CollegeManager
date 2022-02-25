@@ -9,7 +9,7 @@ namespace CollegeManager.Controllers
     {
         public JsonResult GetCourse()
         {
-            using (var db = new CollegeEntities())
+            using (var db = new Entities())
             {
                 var listCourses = db.Courses.Select(x => new CourseModel
                 {
@@ -30,7 +30,7 @@ namespace CollegeManager.Controllers
         {
             if (course != null)
             {
-                using (var db = new CollegeEntities())
+                using (var db = new Entities())
                 {
                     db.Courses.Add(course);
                     db.SaveChanges();
@@ -44,7 +44,7 @@ namespace CollegeManager.Controllers
         [HttpPost]
         public JsonResult UpdateCourse(Course funcionario)
         {
-            using (var db = new CollegeEntities())
+            using (var db = new Entities())
             {
                 var funcionarioAtualizado = db.Courses.Find(funcionario.CourseId);
 
@@ -70,7 +70,7 @@ namespace CollegeManager.Controllers
         [HttpPost]
         public JsonResult DeleCourse(int id)
         {
-            using (var db = new CollegeEntities())
+            using (var db = new Entities())
             {
                 var funcionario = db.Courses.Find(id);
                 if (funcionario == null)

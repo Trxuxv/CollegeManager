@@ -18,7 +18,7 @@ namespace CollegeManager.Controllers
         [HttpGet]
         public JsonResult GetSubjects()
         {
-            using (var db = new CollegeEntities())
+            using (var db = new Entities())
             {
                 var listSubjects = db.Subjects.Select(x => new SubjectModel
                 {
@@ -38,7 +38,7 @@ namespace CollegeManager.Controllers
         {
             if (teacher != null)
             {
-                using (var db = new CollegeEntities())
+                using (var db = new Entities())
                 {
                     db.Teachers.Add(teacher);
                     db.SaveChanges();
