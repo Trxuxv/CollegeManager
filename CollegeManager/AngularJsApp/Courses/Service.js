@@ -20,20 +20,18 @@
         return request;
     }
 
-    //Método responsável por Atualizar Funcionário Por Id: Update
-    this.atualizarFuncionario = function (course) {
+    this.updateCourse = function (course) {
 
         var requestAtualizado = $http({
             method: 'post',
-            url: '/Course/AtualizarFuncionario',
+            url: '/Course/UpdateCourse',
             data: course
         });
         return requestAtualizado;
     }
 
-    //Método responsável por Excluir Funcionário Por Id: Delete
-    this.excluirFuncionario = function (AtualizadoFuncionarioId) {
+    this.deleteCourse = function (UpdatedCourseId) {
 
-        return $http.post('/Course/ExcluirFuncionario/' + AtualizadoFuncionarioId);
+        return $http.post('/Course/DeleCourse/' + UpdatedCourseId);
     }
 });

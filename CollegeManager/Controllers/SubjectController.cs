@@ -14,7 +14,6 @@ namespace CollegeManager.Controllers
             return View();
         }
 
-
         [HttpGet]
         public JsonResult GetSubjects()
         {
@@ -34,13 +33,13 @@ namespace CollegeManager.Controllers
         }
 
         [HttpPost]
-        public JsonResult AddTeacher(Teacher teacher)
+        public JsonResult AddSubject(Subject subject)
         {
-            if (teacher != null)
+            if (subject != null)
             {
                 using (var db = new Entities())
                 {
-                    db.Teachers.Add(teacher);
+                    db.Subjects.Add(subject);
                     db.SaveChanges();
 
                     return Json(new { success = true });

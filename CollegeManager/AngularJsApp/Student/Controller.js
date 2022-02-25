@@ -18,7 +18,7 @@
     $scope.addStudent = function () {
 
         var student = {
-            studentId: $scope.teacherId,
+            studentId: $scope.studentId,
             name: $scope.name,
             rgnumber: $scope.rgnumber,
             birthday: $scope.birthday,
@@ -30,10 +30,10 @@
         addInfos.then(function (d) {
             if (d.data.success === true) {
                 loadStudents();
-                alert("Teacher added succesfuly!");
+                alert("Student added succesfuly!");
 
                 $scope.clearData();
-            } else { alert("Teacher wasn't added!"); }
+            } else { alert("Student wasn't added!"); }
         },
             function () {
                 alert("Ocorreu um erro ao tentar adicionar um Novo Funcionário!");
@@ -48,4 +48,64 @@
         $scope.course = "";
     }
 
+    $scope.updateStudentById = function (student) {
+        $scope.UpdatedStudentId = student.StudentId,
+        $scope.UpdatedName = student.Name;
+        $scope.UpdatedBirthday = student.Birthday;
+        $scope.UpdatedCourseId = student.CourseId;
+        $scope.UpdatedRgNumber = student.RgNumber;
+    }
+
+    $scope.updateStudent = function () {
+        var student = {
+            StudentId: $scope.UpdatedStudentId,
+            Name: $scope.UpdatedName,
+            Birthday: $scope.UpdatedBirthday,
+            RgNumber: $scope.UpdatedRgNumber,
+            CourseId: $scope.UpdatedCourseId,
+        };
+        var refreshInfos = studentService.updateStudent(student);
+        refreshInfos.then(function (d) {
+            if (d.data.success === true) {
+                loadStudents();
+                alert("Student updated successfuly!");
+                $scope.clearUpdatedData();
+            }
+            else {
+                alert("Funcionário não Atualizado");
+            }
+        },
+            function () {
+                alert("Ocorreu um erro ao tentar atualizar o Funcionário!");
+            });
+    }
+
+    $scope.clearUpdatedData = function () {
+        $scope.UpdatedStudentId = '';
+        $scope.UpdatedName = '';
+        $scope.UpdatedBirthday = '';
+        $scope.UpdatedCourseId = '';
+        $scope.UpdatedRgNumber = '';
+    }
+
+    $scope.deleteStudentById = function (student) {
+        $scope.UpdatedStudentId = student.StudentId;
+        $scope.UpdatedName = student.Name;
+    }
+
+    $scope.deleteStudent = function (UpdatedStudentId) {
+
+        var deleteInfos = studentService.deleteStudent($scope.UpdatedStudentId);
+        deleteInfos.then(function (d) {
+
+            if (d.data.success === true) {
+                loadStudents();
+
+                alert("Funcionário excluído com Sucesso!");
+            }
+            else {
+                alert("Funcionário não excluído!");
+            }
+        });
+    }
 });

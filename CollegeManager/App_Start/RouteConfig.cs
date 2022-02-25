@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using System.Web.Routing;
 
 namespace CollegeManager
@@ -24,6 +20,18 @@ namespace CollegeManager
               url: "teacher/index",
               defaults: new { controller = "Teacher", action = "Index" }
           );
+
+            routes.MapRoute(
+            name: "Guide",
+            url: "guide/index",
+            defaults: new { controller = "Guide", action = "Index" }
+            );
+
+            routes.MapRoute(
+            name: "Dashboard",
+            url: "dashboard/index",
+            defaults: new { controller = "Dashboard", action = "Index" }
+            );
         }
     }
 }

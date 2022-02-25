@@ -23,7 +23,6 @@
                     <td class="text-center">{{s.SubjectId}}</td>
                     <td class="text-center">{{s.Name}}</td>
                     <td class="text-center">{{s.CourseName}}</td>
-                    @*<td class="text-center">{{s.Approved}}</td>*@
                     <td class="text-center" style="width: 150px; padding: 0.5%;">
                         <a href="#" style="border-radius: 25px; padding: 0.3em 0.6em; margin-right: 0.5em;"
                            data-target="#AtualizarFuncionario"
@@ -42,11 +41,13 @@
                 </tr>
             </tbody>
         </table>
+
+        @*ADD SUBJECT*@
         <div class="modal" id="AdicionarFuncionario" role="dialog" style="width: 100%; padding-top: 8rem;">
             <div class="modal-dialog" style="width: 40%; margin-top: 4%;">
                 <div class="modal-content" style="background: #0d1117;">
-                    <div class="modal-header">
-                        <h3 style="color: #C9D1D9;">New Course</h3>
+                    <div class="modal-header" style="border: none;">
+                        <h3 style="color: #C9D1D9;">New Subject</h3>
                     </div>
                     <div class="modal-body">
                         <form class="form-horizontal" name="AdicionarNovoFuncionarioForm">
@@ -58,23 +59,20 @@
                                 <input class="form-control" type="text" name="nome" ng-model="name" placeholder="Name" style="width:100%;" />
                             </div>
                             <div class="form-group">
-                                <select name="courseId" id="singleSelect">
-                                    <option value="{{s.CourseId}}">{{s.Name}}</option>
-                                </select>
-                                @*<input class="form-control" type="text" name="nome" ng-model="courseId" placeholder="Course" />*@
+                                <input class="form-control" type="text" name="nome" ng-model="courseId" placeholder="Course ID" />
                             </div>
-                            @*@<div class="form-group">
-                                    <input class="form-control" type="text" name="nome" ng-model="minGrade" placeholder="Min. Grade" />
-                                </div>*@
                         </form>
                     </div>
                     <div class="modal-footer" style="border: none;">
-                        <button type="button" class="btn btn-primary" id="btnSalvar" data-dismiss="modal" ng-click="addCourse()">Confirm</button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="limparDados()">Cancel</button>
+                        <button type="button" class="btn btn-primary" id="btnSalvar" data-dismiss="modal" ng-click="addSubject()">Confirm</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clearData()">Close</button>
                     </div>
                 </div>
             </div>
         </div>
+
+
+        @*UPDATE SUBJECT*@
         <div class="modal" id="AtualizarFuncionario" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -113,6 +111,8 @@
                 </div>
             </div>
         </div>
+
+        @*DELETE SUBJECT*@
         <div class="modal" role="dialog" id="ExcluirFuncionario">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -132,6 +132,7 @@
                 </div>
             </div>
         </div>
+    
     </div>
 </div>
 
@@ -139,9 +140,6 @@
     <script src="~/AngularJsApp/Subject/Module.js"></script>
     <script src="~/AngularJsApp/Subject/Service.js"></script>
     <script src="~/AngularJsApp/Subject/Controller.js"></script>
-    <script src="~/AngularJsApp/Courses/Module.js"></script>
-    <script src="~/AngularJsApp/Courses/Service.js"></script>
-    <script src="~/AngularJsApp/Courses/Controller.js"></script>
 }
 
 <style>

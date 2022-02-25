@@ -42,27 +42,26 @@ namespace CollegeManager.Controllers
         }
 
         [HttpPost]
-        public JsonResult UpdateCourse(Course funcionario)
+        public JsonResult UpdateCourse(Course course)
         {
             using (var db = new Entities())
             {
-                var funcionarioAtualizado = db.Courses.Find(funcionario.CourseId);
+                var courseUpdated = db.Courses.Find(course.CourseId);
 
-                if (funcionarioAtualizado == null)
+                if (courseUpdated == null)
                 {
                     return Json(new { success = false });
                 }
 
                 else
                 {
-                    funcionarioAtualizado.Name = funcionario.Name;
-                    //funcionarioAtualizado.Departamento = funcionario.Departamento;
-                    //funcionarioAtualizado.Cargo = funcionario.Cargo;
-                    //funcionarioAtualizado.Email = funcionario.Email;
+                    courseUpdated.Name = course.Name;
+                    courseUpdated.Duration = course.Duration;
+                    courseUpdated.Category = course.Category;
+                    courseUpdated.TeacherId = course.TeacherId;
 
                     db.SaveChanges();
                     return Json(new { success = true });
-
                 }
             }
         }
@@ -72,13 +71,13 @@ namespace CollegeManager.Controllers
         {
             using (var db = new Entities())
             {
-                var funcionario = db.Courses.Find(id);
-                if (funcionario == null)
+                var course = db.Courses.Find(id);
+                if (course == null)
                 {
                     return Json(new { success = false });
                 }
 
-                db.Courses.Remove(funcionario);
+                db.Courses.Remove(course);
                 db.SaveChanges();
 
                 return Json(new { success = true });

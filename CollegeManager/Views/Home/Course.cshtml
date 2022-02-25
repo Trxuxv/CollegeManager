@@ -12,6 +12,8 @@
                 <span class="glyphicon glyphicon-plus"></span>
             </button>
         </div>
+
+        @*LIST*@
         <table class="table" style="background: #0d1117; color: #161b22; border: none; ">
             <thead style="background-color: #161b22; border: none; color: white; ">
                 <tr>
@@ -35,14 +37,14 @@
                         <a href="#" style="border-radius: 25px; padding: 0.3em 0.6em; margin-right: 0.5em;"
                            data-target="#AtualizarFuncionario"
                            data-toggle="modal" class="btn btn-success"
-                           ng-click="atualizarFuncionarioPorId(func)">
+                           ng-click="updateCourseById(c)">
                             <span class="glyphicon glyphicon-pencil"></span>
                         </a>
                         <a href="#" s style="border-radius: 25px; padding: 0.3em 0.6em; margin-right: 0.5em;"
                            data-target="#ExcluirFuncionario"
                            id="btnExcluir"
                            data-toggle="modal" class="btn btn-danger"
-                           ng-click="excluirFuncionarioPorId(func)">
+                           ng-click="deleteCourseById(c)">
                             <span class="glyphicon glyphicon-trash"></span>
                         </a>
                     </td>
@@ -50,10 +52,11 @@
             </tbody>
         </table>
 
+        @*ADD COURSE*@
         <div class="modal" id="AdicionarFuncionario" role="dialog" style="width: 100%; padding-top: 8rem;">
             <div class="modal-dialog" style="width: 40%; margin-top: 4%;">
                 <div class="modal-content" style="background: #0d1117;">
-                    <div class="modal-header">
+                    <div class="modal-header"  style="border: none;">
                         <h3 style="color: #C9D1D9;">New Course</h3>
                     </div>
                     <div class="modal-body">
@@ -72,20 +75,19 @@
                                 <input class="form-control" type="text" name="nome" ng-model="category" placeholder="Category" />
                             </div>
                             <div class="form-group">
-                                <input class="form-control" type="text" name="nome" ng-model="teacherId" placeholder="Teacher" />
+                                <input class="form-control" type="text" name="nome" ng-model="teacherId" placeholder="Teacher ID" />
                             </div>
-                            <select class="form-control" ng-model="teacherId" required>
-                                <option ng-repeat="c in Teachers" value="{{c.TeacherId}}">{{c.Name}}</option>
-                            </select>
                         </form>
                     </div>
                     <div class="modal-footer" style="border: none;">
                         <button type="button" class="btn btn-primary" id="btnSalvar" data-dismiss="modal" ng-click="addCourse()">Confirm</button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="limparDados()">Cancel</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clearData()">Cancel</button>
                     </div>
                 </div>
             </div>
         </div>
+
+        @*UPDATE COURSE*@
         <div class="modal" id="AtualizarFuncionario" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -95,54 +97,57 @@
                     <div class="modal-body" style="margin-left: 20px">
                         <form class="form-horizontal" name="AtualizarForm">
                             <div class="form-group">
-                                <input class="form-control" readonly="readonly" name="FuncionarioId" ng-model="AtualizadoFuncionarioId" type="hidden" placeholder="Funcionario Id" />
+                                <input class="form-control" readonly="readonly" name="FuncionarioId" ng-model="UpdatedCourseId" type="hidden" placeholder="UpdatedCourseId" />
                             </div>
                             <div class="form-group">
                                 <label class="text-info"> Nome</label>
-                                <input class="form-control" name="Nome" ng-model="AtualizadoNome" type="text" placeholder="Nome" />
+                                <input class="form-control" name="Nome" ng-model="UpdatedName" type="text" placeholder="Nome" />
                             </div>
                             <div class="form-group">
                                 <label class="text-info"> Email</label>
-                                <input class="form-control" name="Email" ng-model="AtualizadoEmail" type="email" placeholder="Email" />
-                            </div>
-                            <div class="form-group">
-                                <label class="text-info"> Departamento</label>
-                                <input class="form-control" name="Departamento" ng-model="AtualizadoDepartamento" type="text" placeholder="Departamento" />
+                                <input class="form-control" name="Email" ng-model="UpdatedDuration" type="text" placeholder="Duration" />
                             </div>
                             <div class="form-group">
                                 <label class="text-info"> Cargo</label>
-                                <input class="form-control" name="Cargo" ng-model="AtualizadoCargo" type="text" placeholder="Cargo" />
+                                <input class="form-control" name="Cargo" ng-model="UpdatedCategory" type="text" placeholder="Category" />
+                            </div>
+                            <div class="form-group">
+                                <label class="text-info"> Departamento</label>
+                                <input class="form-control" name="Departamento" ng-model="UpdatedTeacherId" type="text" placeholder="TeacherId" />
                             </div>
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" id="btnUpdate" data-dismiss="modal" ng-click="atualizarFuncionario()">
-                            Atualizar
+                        <button type="button" class="btn btn-primary" id="btnUpdate" data-dismiss="modal" ng-click="updateCourse()">
+                            Update
                         </button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>
         </div>
+
+        @*DELETE COURSE*@
         <div class="modal" role="dialog" id="ExcluirFuncionario">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h3 class="text-info">Você tem certeza que deseja excluir o Funcionário?</h3>
+                        <h3 class="text-info">Você tem certeza que deseja excluir o Curso?</h3>
                     </div>
                     <div class="modal-body">
                         <div>
-                            <p>Id do Funcionário : {{AtualizadoFuncionarioId}}</p>
-                            <p>Nome do Fucionário : {{AtualizadoNome}}</p>
+                            <p>Course's id: {{UpdatedCourseId}}</p>
+                            <p>Course's Name: {{UpdatedName}}</p>
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="excluirFuncionario(AtualizadoFuncionarioId)">Excluir</button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                    <div class="modal-footer" style="border: none;">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="deleteCourse(UpdatedCourseId)">Delete</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>
         </div>
+    
     </div>
 </div>
 

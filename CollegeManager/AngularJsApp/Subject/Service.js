@@ -5,7 +5,7 @@
         return $http.get("/Subject/GetSubjects");
     }
 
-    this.addSubject = function (course) {
+    this.addSubject = function (subject) {
 
         var request = $http({
             method: 'post',
@@ -16,18 +16,18 @@
         return request;
     }
 
-    this.atualizarFuncionario = function (course) {
+    this.updateSubject = function (subject) {
 
-        var requestAtualizado = $http({
+        var updateRequest = $http({
             method: 'post',
-            url: '/Course/AtualizarFuncionario',
-            data: course
+            url: '/Subject/UpdateSubject',
+            data: subject
         });
-        return requestAtualizado;
+        return updateRequest;
     }
 
-    this.excluirFuncionario = function (AtualizadoFuncionarioId) {
+    this.deleteSubject = function (UpdatedSubjectId) {
 
-        return $http.post('/Course/ExcluirFuncionario/' + AtualizadoFuncionarioId);
+        return $http.post('/Subject/DeleteSubject/' + UpdatedSubjectId);
     }
 });

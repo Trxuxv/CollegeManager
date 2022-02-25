@@ -16,20 +16,18 @@
         return request;
     }
 
-    //Método responsável por Atualizar Funcionário Por Id: Update
-    this.atualizarFuncionario = function (course) {
+    this.updateStudent = function (student) {
 
-        var requestAtualizado = $http({
+        var updatedRequest = $http({
             method: 'post',
-            url: '/Course/AtualizarFuncionario',
-            data: course
+            url: '/Student/UpdateStudent',
+            data: student
         });
-        return requestAtualizado;
+        return updatedRequest;
     }
 
-    //Método responsável por Excluir Funcionário Por Id: Delete
-    this.excluirFuncionario = function (AtualizadoFuncionarioId) {
+    this.deleteStudent = function (UpdatedStudentId) {
 
-        return $http.post('/Course/ExcluirFuncionario/' + AtualizadoFuncionarioId);
+        return $http.post('/Student/DeleteStudent/' + UpdatedStudentId);
     }
 });
