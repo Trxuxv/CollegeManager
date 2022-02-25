@@ -20,7 +20,7 @@ Technologies used:
 🟪MVC
 <br>
 
-︵‿︵‿︵‿︵‿︵‿︵‿︵‿︵‿︵   Guide   ︵‿︵‿︵‿︵‿︵‿︵‿︵‿︵‿︵   <br>
+︵‿︵‿︵‿︵‿︵‿︵‿︵‿︵‿︵‿︵‿︵‿︵   Guide   ︵‿︵‿︵‿︵‿︵‿︵‿︵‿︵‿︵‿︵‿︵‿︵   <br>
 <br>
 ➪ To run the project be sure that your package: Microsoft.CodeDom.Providers.DotNetCompilerPlatform is uppdated.
 <br> <br>
