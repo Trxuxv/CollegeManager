@@ -16,7 +16,7 @@ namespace CollegeManager.Controllers
         [HttpGet]
         public JsonResult GetStudents()
         {
-            using (var db = new Entities())
+            using (var db = new Database())
             {
                 var listStudents = db.Students.Select(x => new StudentModel
                 {
@@ -37,7 +37,7 @@ namespace CollegeManager.Controllers
         {
             if (student != null)
             {
-                using (var db = new Entities())
+                using (var db = new Database())
                 {
                     db.Students.Add(student);
                     db.SaveChanges();
@@ -51,7 +51,7 @@ namespace CollegeManager.Controllers
         [HttpPost]
         public JsonResult UpdateStudent(Student student)
         {
-            using (var db = new Entities())
+            using (var db = new Database())
             {
                 var studentUpdated = db.Students.Find(student.StudentId);
 
@@ -76,7 +76,7 @@ namespace CollegeManager.Controllers
         [HttpPost]
         public JsonResult DeleteStudent(int id)
         {
-            using (var db = new Entities())
+            using (var db = new Database())
             {
                 var student = db.Students.Find(id);
                 if (student == null)

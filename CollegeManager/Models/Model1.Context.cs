@@ -13,10 +13,10 @@ namespace CollegeManager.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class Entities : DbContext
+    public partial class Database : DbContext
     {
-        public Entities()
-            : base("name=Entities")
+        public Database()
+            : base("name=Database")
         {
             this.Configuration.LazyLoadingEnabled = false;
         }
@@ -30,7 +30,6 @@ namespace CollegeManager.Models
         public DbSet<Grade> Grades { get; set; }
         public DbSet<Student> Students { get; set; }
         public DbSet<Subject> Subjects { get; set; }
-        public DbSet<sysdiagram> sysdiagrams { get; set; }
         public DbSet<Teacher> Teachers { get; set; }
     }
 }

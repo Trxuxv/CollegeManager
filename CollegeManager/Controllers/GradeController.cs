@@ -15,7 +15,7 @@ namespace CollegeManager.Controllers
         [HttpGet]
         public JsonResult GetGrades()
         {
-            using (var db = new Entities())
+            using (var db = new Database())
             {
                 var listGrades = db.Grades.Select(x => new GradeModel
                 {
@@ -39,7 +39,7 @@ namespace CollegeManager.Controllers
         {
             if (grade != null)
             {
-                using (var db = new Entities())
+                using (var db = new Database())
                 {
                     db.Grades.Add(grade);
                     db.SaveChanges();
@@ -53,7 +53,7 @@ namespace CollegeManager.Controllers
         [HttpPost]
         public JsonResult UpdateGrade(Grade grade)
         {
-            using (var db = new Entities())
+            using (var db = new Database())
             {
                 var gradeUpdated = db.Grades.Find(grade.GradeId);
 
@@ -77,7 +77,7 @@ namespace CollegeManager.Controllers
         [HttpPost]
         public JsonResult DeleteGrade(int id)
         {
-            using (var db = new Entities())
+            using (var db = new Database())
             {
                 var grade = db.Grades.Find(id);
                 if (grade == null)
