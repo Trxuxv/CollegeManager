@@ -1,16 +1,17 @@
 ﻿@*<div ng-if="a= true" class="alert alert-success" role="alert" style="width: 70%; margin: auto; text-align:center;">
-    This is a success alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
-</div>
-<div class="alert alert-danger" role="alert" style="width: 70%; margin: auto; text-align:center;">
-    This is a danger alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
-</div>*@
+        This is a success alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
+    </div>
+    <div class="alert alert-danger" role="alert" style="width: 70%; margin: auto; text-align:center;">
+        This is a danger alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
+    </div>*@
 <div class="container" ng-app="courses" ng-controller="courseCtrl" style="width: 80%; height: 75rem;  background-color: #0d1117; border-radius: 10px; padding: 1.3% 0.2% 0.2% 1%; overflow-y: scroll;">
     <div class="panel" style="border: none; background: #161b22;">
         <div class="panel-heading" style="border: none; background: #161b22; color: #C9D1D9;">Courses</div>
         <div class="panel-body" style="background: #0d1117; color: #8B949E;">
-            <button type="button" class="btn btn-primary" data-target="#AdicionarFuncionario" data-toggle="modal" style="border-radius: 25px; width: 38px;">
+            <button type="button" class="btn btn-primary" data-target="#AddCourse" data-toggle="modal" style="border-radius: 25px; width: 38px;">
                 <span class="glyphicon glyphicon-plus"></span>
             </button>
+            <input id="search" shadow-none ng-model="search" style="background: #0a0d12; height: 30px; margin-left: 10em; width: 100%; border: none; padding: 1.5%; " placeholder="Search for a course..." type="text" />
         </div>
 
         @*LIST*@
@@ -26,7 +27,7 @@
                 </tr>
             </thead>
             <tbody style="color: #8B949E; border: 0.2px solid #161b22;">
-                <tr ng-repeat="c in Courses">
+                <tr ng-repeat="c in Courses| filter:search">
                     <td class="text-center">{{c.CourseId}}</td>
                     <td class="text-center">{{c.Name}}</td>
                     <td class="text-center">{{c.Duration}}y</td>
@@ -53,10 +54,10 @@
         </table>
 
         @*ADD COURSE*@
-        <div class="modal" id="AdicionarFuncionario" role="dialog" style="width: 100%; padding-top: 8rem;">
+        <div class="modal" id="AddCourse" role="dialog" style="width: 100%; padding-top: 8rem;">
             <div class="modal-dialog" style="width: 40%; margin-top: 4%;">
                 <div class="modal-content" style="background: #0d1117;">
-                    <div class="modal-header"  style="border: none;">
+                    <div class="modal-header" style="border: none;">
                         <h3 style="color: #C9D1D9;">New Course</h3>
                     </div>
                     <div class="modal-body">
@@ -80,8 +81,8 @@
                         </form>
                     </div>
                     <div class="modal-footer" style="border: none;">
-                        <button type="button" class="btn btn-primary" id="btnSalvar" data-dismiss="modal" ng-click="addCourse()">Confirm</button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clearData()">Cancel</button>
+                        <button id="btnSave" type="button" class="btn btn-primary" data-dismiss="modal" ng-click="addCourse()">Confirm</button>
+                        <button id="btnSave" type="button" class="btn btn-default" data-dismiss="modal" ng-click="clearData()">Cancel</button>
                     </div>
                 </div>
             </div>
@@ -95,7 +96,7 @@
                         <h3 class="text-info">Update Course</h3>
                     </div>
                     <div class="modal-body" style="margin-left: 20px">
-                        <form class="form-horizontal" name="AtualizarForm">
+                        <form class="form-horizontal" name="UpdateForm">
                             <div class="form-group">
                                 <input class="form-control" readonly="readonly" name="FuncionarioId" ng-model="UpdatedCourseId" type="hidden" placeholder="UpdatedCourseId" />
                             </div>
@@ -118,10 +119,10 @@
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" id="btnUpdate" data-dismiss="modal" ng-click="updateCourse()">
+                        <button id="btnSave" type="button" class="btn btn-primary" id="btnUpdate" data-dismiss="modal" ng-click="updateCourse()">
                             Update
                         </button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button id="btnSave" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>
@@ -141,13 +142,13 @@
                         </div>
                     </div>
                     <div class="modal-footer" style="border: none;">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="deleteCourse(UpdatedCourseId)">Delete</button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button id="btnSave" type="button" class="btn btn-danger" data-dismiss="modal" ng-click="deleteCourse(UpdatedCourseId)">Delete</button>
+                        <button id="btnSave" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>
         </div>
-    
+
     </div>
 </div>
 
@@ -179,6 +180,20 @@
 
     .form-group {
         width: 100%;
+    }
+
+    #btnSave {
+        width: 15rem;
+        border: none;
+    }
+
+        #btnSave:focus {
+            outline: none;
+        }
+
+    .modal-footer {
+        text-align: center;
+        margin-bottom: 3em;
     }
 
     input {

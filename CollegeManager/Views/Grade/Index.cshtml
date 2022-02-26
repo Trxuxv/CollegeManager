@@ -5,7 +5,7 @@
             <button type="button" class="btn btn-primary" data-target="#AdicionarFuncionario" data-toggle="modal" style="border-radius: 25px; width: 38px;">
                 <span class="glyphicon glyphicon-plus"></span>
             </button>
-            <input id="search" shadow-none ng-model="test" style="background: #0a0d12; height: 30px; margin-left: 10em; width: 100%; border: none; padding: 1.5%; " placeholder="Search for a grades..." type="text" />
+            <input id="search" shadow-none ng-model="search" style="background: #0a0d12; height: 30px; margin-left: 10em; width: 100%; border: none; padding: 1.5%; " placeholder="Search for a grade..." type="text" />
         </div>
 
         @*LIST*@
@@ -22,7 +22,7 @@
                 </tr>
             </thead>
             <tbody style="color: #8B949E; border: 0.2px solid #161b22;  ">
-                <tr ng-repeat="t in Grades | filter:test">
+                <tr ng-repeat="t in Grades | filter:search">
                     <td class="text-center" style="border-right: 0.5px solid #161b22 !important;">{{t.GradeId}}</td>
                     <td class="text-center">{{t.GradeDescription}}</td>
                     <td class="text-center">{{t.StudentName}}</td>
@@ -69,8 +69,8 @@
                         </form>
                     </div>
                     <div class="modal-footer" style="border: none;">
-                        <button type="button" class="btn btn-primary" id="btnSalvar" data-dismiss="modal" ng-click="addGrade()">Confirm</button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clearData()">Close</button>
+                        <button id="btnSave" type="button" class="btn btn-primary" data-dismiss="modal" ng-click="addGrade()">Confirm</button>
+                        <button id="btnSave" type="button" class="btn btn-default" data-dismiss="modal" ng-click="clearData()">Close</button>
                     </div>
                 </div>
             </div>
@@ -100,21 +100,21 @@
                         </form>
                     </div>
                     <div class="modal-footer" style="border: none;">
-                        <button type="button" class="btn btn-primary" id="btnUpdate" data-dismiss="modal" ng-click="updateGrade()">
+                        <button id="btnSave" type="button" class="btn btn-primary" id="btnUpdate" data-dismiss="modal" ng-click="updateGrade()">
                             Update
                         </button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button id="btnSave" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>
         </div>
-        
+
         @*DELETE GRADE*@
         <div class="modal" role="dialog" id="DeleteTeacher" style="padding-top: 13em;">
             <div class="modal-dialog">
                 <div class="modal-content" style="background: #0d1117;">
-                    <div class="modal-header" style="border: none;">
-                        <h3 class="text-info" style="color: white;">Are you sure you want to delete this grade?</h3>
+                    <div class="modal-header" style="border: none; margin-top: 3em;">
+                        <h4 class="text-info" style="color: white; text-align: center;">Are you sure you want to delete this grade?</h4>
                     </div>
                     <div class="modal-body">
                         <div style="color: white; text-align: center;">
@@ -123,13 +123,13 @@
                         </div>
                     </div>
                     <div class="modal-footer" style="border: none;">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="deleteGrade(UpdatedGradeId)">Delete</button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" id="btnSave" class="btn btn-danger" data-dismiss="modal" ng-click="deleteGrade(UpdatedGradeId)">Delete</button>
+                        <button type="button" id="btnSave" class="btn btn-default" data-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>
         </div>
-    
+
     </div>
 </div>
 
@@ -179,6 +179,21 @@
 
     th {
         font-weight: 300;
+    }
+
+
+    #btnSave {
+        width: 15rem;
+        border: none;
+    }
+
+        #btnSave:focus {
+            outline: none;
+        }
+
+    .modal-footer {
+        text-align: center;
+        margin-bottom: 3em;
     }
 
     label {

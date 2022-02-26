@@ -16,10 +16,35 @@ namespace CollegeManager
             );
 
             routes.MapRoute(
-              name: "Teacher",
-              url: "teacher/index",
-              defaults: new { controller = "Teacher", action = "Index" }
-          );
+            name: "Teacher",
+            url: "teacher/index",
+            defaults: new { controller = "Teacher", action = "Index" }
+            );
+
+            routes.MapRoute(
+            name: "Grade",
+            url: "grade/index",
+            defaults: new { controller = "Grade", action = "Index" }
+           );
+
+            routes.MapRoute(
+            name: "Student",
+            url: "student/index",
+            defaults: new { controller = "Student", action = "Index" }
+            );
+
+            routes.MapRoute(
+            name: "Subject",
+            url: "subject/index",
+            defaults: new { controller = "Subject", action = "Index" }
+            );
+
+
+            routes.MapRoute(
+            name: "Course",
+            url: "course/index",
+            defaults: new { controller = "Course", action = "Index" }
+            );
 
             routes.MapRoute(
             name: "Guide",

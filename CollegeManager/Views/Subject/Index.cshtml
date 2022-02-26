@@ -6,6 +6,7 @@
             <button type="button" class="btn btn-primary" data-target="#AdicionarFuncionario" data-toggle="modal" style="border-radius: 25px; width: 38px;">
                 <span class="glyphicon glyphicon-plus"></span>
             </button>
+            <input id="search" shadow-none ng-model="search" style="background: #0a0d12; height: 30px; margin-left: 10em; width: 100%; border: none; padding: 1.5%; color: #161b22 !important;" placeholder="Search for a subject..." type="text" />
         </div>
 
         @*LIST*@
@@ -20,7 +21,7 @@
             </thead>
 
             <tbody style="background: #0d1117; color: #8B949E; border: 0.2px solid #161b22; ">
-                <tr ng-repeat="s in Subjects">
+                <tr ng-repeat="s in Subjects| filter:search">
                     <td class="text-center">{{s.SubjectId}}</td>
                     <td class="text-center">{{s.Name}}</td>
                     <td class="text-center">{{s.CourseName}}</td>

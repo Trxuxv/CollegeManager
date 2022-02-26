@@ -88,10 +88,10 @@
                         </form>
                     </div>
                     <div class="modal-footer" style="border: none;">
-                        <button type="button" class="btn btn-primary" id="btnUpdate" data-dismiss="modal" ng-click="updateTeacher()">
+                        <button type="button" class="btn btn-primary" id="btnSave" data-dismiss="modal" ng-click="updateTeacher()">
                             Update
                         </button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" id="btnSave" class="btn btn-default" data-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>
@@ -150,6 +150,19 @@
         min-width: 70%;
         margin: auto;
         border-radius: 25px !important;
+    }
+
+    #btnSave {
+        width: 15rem;
+        border: none;
+    }
+
+        #btnSave:focus {
+            outline: none;
+        }
+
+    #add:focus {
+        outline: none;
     }
 
     td {

@@ -7,6 +7,12 @@ namespace CollegeManager.Controllers
 {
     public class CourseController : Controller
     {
+        public ActionResult Index()
+        {
+            return View();
+        }
+
+        [HttpGet]
         public JsonResult GetCourse()
         {
             using (var db = new Entities())
