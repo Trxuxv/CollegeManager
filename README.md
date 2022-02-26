@@ -1,5 +1,6 @@
 # COLLEGE MANAGER
-![image](https://user-images.githubusercontent.com/79454375/155453765-62772e6b-1b6d-4fb3-b1ce-9d536c22995d.png)
+![image](https://user-images.githubusercontent.com/79454375/155821848-3d92d133-8738-4b93-a37e-1b61f46db775.png)
+
 
 This is a system test of management of colleges.
 
