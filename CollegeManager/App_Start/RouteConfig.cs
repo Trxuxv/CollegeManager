@@ -52,11 +52,6 @@ namespace CollegeManager
             defaults: new { controller = "Guide", action = "Index" }
             );
 
-            routes.MapRoute(
-            name: "Dashboard",
-            url: "dashboard/index",
-            defaults: new { controller = "Dashboard", action = "Index" }
-            );
         }
     }
 }
