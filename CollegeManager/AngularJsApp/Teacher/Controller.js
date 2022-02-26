@@ -29,13 +29,34 @@
         addInfos.then(function (d) {
             if (d.data.success === true) {
                 loadTeachers();
-                alert("Teacher added succesfuly!");
-
+                Swal.fire({
+                    title: 'Teacher successfully added',
+                    width: 400,
+                    height: 30,
+                    icon: 'success',
+                    position: 'top-end',
+                    padding: '3em',
+                    color: '#fff',
+                    background: '#0d1117',
+                    showConfirmButton: false,
+                    timer: 900
+                })
                 $scope.clearData();
             } else { alert("Teacher wasn't added!"); }
         },
             function () {
-                alert("Ocorreu um erro ao tentar adicionar um Novo Funcionário!");
+                Swal.fire({
+                    title: 'Failed',
+                    width: 400,
+                    height: 30,
+                    icon: 'error',
+                    position: 'top-end',
+                    padding: '3em',
+                    color: '#fff',
+                    background: '#0d1117',
+                    showConfirmButton: false,
+                    timer: 900
+                })
             });
     }
 
@@ -64,15 +85,48 @@
         refreshInfos.then(function (d) {
             if (d.data.success === true) {
                 loadTeachers();
-                alert("Funcionario Atualizado com Sucesso!");
+                Swal.fire({
+                    title: 'Teacher successfully updated',
+                    width: 400,
+                    height: 30,
+                    icon: 'success',
+                    position: 'top-end',
+                    padding: '3em',
+                    color: '#fff',
+                    background: '#0d1117',
+                    showConfirmButton: false,
+                    timer: 900
+                })
                 $scope.clearUpdatedData();
             }
             else {
-                alert("Funcionário não Atualizado");
+                Swal.fire({
+                    title: 'Failed',
+                    width: 400,
+                    height: 30,
+                    icon: 'error',
+                    position: 'top-end',
+                    padding: '3em',
+                    color: '#fff',
+                    background: '#0d1117',
+                    showConfirmButton: false,
+                    timer: 900
+                })
             }
         },
             function () {
-                alert("Ocorreu um erro ao tentar atualizar o Funcionário!");
+                Swal.fire({
+                    title: 'Failed',
+                    width: 400,
+                    height: 30,
+                    icon: 'error',
+                    position: 'top-end',
+                    padding: '3em',
+                    color: '#fff',
+                    background: '#0d1117',
+                    showConfirmButton: false,
+                    timer: 900
+                })
             });
     }
 
@@ -96,10 +150,32 @@
             if (d.data.success === true) {
                 loadTeachers();
 
-                alert("Funcionário excluído com Sucesso!");
+                Swal.fire({
+                    title: 'Teacher successfully deleted',
+                    width: 400,
+                    height: 30,
+                    icon: 'success',
+                    position: 'top-end',
+                    padding: '3em',
+                    color: '#fff',
+                    background: '#0d1117',
+                    showConfirmButton: false,
+                    timer: 900
+                })
             }
             else {
-                alert("Funcionário não excluído!");
+                Swal.fire({
+                    title: 'Failed',
+                    width: 400,
+                    height: 30,
+                    icon: 'error',
+                    position: 'top-end',
+                    padding: '3em',
+                    color: '#fff',
+                    background: '#0d1117',
+                    showConfirmButton: false,
+                    timer: 900
+                })
             }
         });
     }

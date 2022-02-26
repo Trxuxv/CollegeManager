@@ -5,8 +5,10 @@
             <button type="button" class="btn btn-primary" data-target="#AdicionarFuncionario" data-toggle="modal" style="border-radius: 25px; width: 38px;">
                 <span class="glyphicon glyphicon-plus"></span>
             </button>
-            <input id="search" shadow-none ng-model="test" style="background: #0a0d12; height: 30px; margin-left: 10em; width: 100%; border: none; padding: 1.5%; " placeholder="Search for a teacher..."  type="text"/>
+            <input id="search" shadow-none ng-model="test" style="background: #0a0d12; height: 30px; margin-left: 10em; width: 100%; border: none; padding: 1.5%; " placeholder="Search for a teacher..." type="text" />
         </div>
+
+        @*LIST*@
         <table class="table" style="background: #0d1117; color: #8B949E; border: 0.2px solid #161b22; ">
             <thead style="background-color: #161b22; border: none; color: white; ">
                 <tr>
@@ -34,7 +36,8 @@
                 </tr>
             </tbody>
         </table>
-
+        
+        @*ADD TEACHER*@
         <div class="modal" id="AdicionarFuncionario" role="dialog" style="width: 100%; padding-top: 12rem;">
             <div class="modal-dialog" style="width: 40%; margin-top: 4%;">
                 <div class="modal-content" style="background: #0d1117;">
@@ -59,12 +62,14 @@
                         </form>
                     </div>
                     <div class="modal-footer" style="border: none;">
-                        <button type="button" class="btn btn-primary" id="btnSalvar" data-dismiss="modal" ng-click="addTeacher()">Confirm</button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clearData()">Close</button>
+                        <button type="button" class="btn btn-primary" id="btnSave" data-dismiss="modal" ng-click="addTeacher()">Confirm</button>
+                        <button type="button" class="btn btn-default" id="btnSave" data-dismiss="modal" ng-click="clearData()">Close</button>
                     </div>
                 </div>
             </div>
         </div>
+
+        @*UPDATE TEACHER*@
         <div class="modal" id="UpdateTeacher" role="dialog" style="width: 100%; margin-top: 12rem;">
             <div class="modal-dialog" style="width: 40%; margin-top: 4%;">
                 <div class="modal-content" style="background: #0d1117; color: whitesmoke;">
@@ -96,11 +101,13 @@
                 </div>
             </div>
         </div>
+
+        @*DELETE TEACHER*@
         <div class="modal" role="dialog" id="DeleteTeacher" style="padding-top: 13em;">
             <div class="modal-dialog">
                 <div class="modal-content" style="background: #0d1117;">
-                    <div class="modal-header" style="border: none;">
-                        <h3 class="text-info" style="color: white;">Are you sure you want to delete this teacher?</h3>
+                    <div class="modal-header" style="border: none; margin-top: 3em;">
+                        <h4 class="text-info" style="color: white; text-align: center;">Are you sure you want to delete this teacher?</h4>
                     </div>
                     <div class="modal-body">
                         <div style="color: white; text-align: center;">
@@ -109,8 +116,8 @@
                         </div>
                     </div>
                     <div class="modal-footer" style="border: none;">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="deleteTeacher(UpdatedTeacherId)">Delete</button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button id="btnSave" type="button" class="btn btn-danger" data-dismiss="modal" ng-click="deleteTeacher(UpdatedTeacherId)">Delete</button>
+                        <button id="btnSave" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>
@@ -150,6 +157,11 @@
         min-width: 70%;
         margin: auto;
         border-radius: 25px !important;
+    }
+
+    .modal-footer {
+        text-align: center;
+        margin-bottom: 3em;
     }
 
     #btnSave {

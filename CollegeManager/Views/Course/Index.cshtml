@@ -89,56 +89,52 @@
         </div>
 
         @*UPDATE COURSE*@
-        <div class="modal" id="AtualizarFuncionario" role="dialog">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h3 class="text-info">Update Course</h3>
+        <div class="modal" id="AtualizarFuncionario" role="dialog" style="width: 100%; margin-top: 12rem;">
+            <div class="modal-dialog" style="width: 40%; margin-top: 4%;">
+                <div class="modal-content" style="background: #0d1117; color: whitesmoke;">
+                    <div class="modal-header" style="border: none;">
+                        <h3 style="color: #C9D1D9;">Update Course</h3>
                     </div>
                     <div class="modal-body" style="margin-left: 20px">
                         <form class="form-horizontal" name="UpdateForm">
                             <div class="form-group">
-                                <input class="form-control" readonly="readonly" name="FuncionarioId" ng-model="UpdatedCourseId" type="hidden" placeholder="UpdatedCourseId" />
+                                <input class="form-control" readonly="readonly" name="TeacherId" ng-model="UpdatedCourseId" type="hidden" placeholder="UpdatedCourseId" />
                             </div>
                             <div class="form-group">
-                                <label class="text-info"> Nome</label>
-                                <input class="form-control" name="Nome" ng-model="UpdatedName" type="text" placeholder="Nome" />
+                                <input class="form-control" name="Name" ng-model="UpdatedName" type="text" placeholder="Name" />
                             </div>
                             <div class="form-group">
-                                <label class="text-info"> Email</label>
-                                <input class="form-control" name="Email" ng-model="UpdatedDuration" type="text" placeholder="Duration" />
+                                <input class="form-control" name="Birthday" ng-model="UpdatedDuration" type="text" placeholder="Duration" />
                             </div>
                             <div class="form-group">
-                                <label class="text-info"> Cargo</label>
-                                <input class="form-control" name="Cargo" ng-model="UpdatedCategory" type="text" placeholder="Category" />
+                                <input class="form-control" name="Salary" ng-model="UpdatedCategory" type="text" placeholder="Category" />
                             </div>
                             <div class="form-group">
-                                <label class="text-info"> Departamento</label>
-                                <input class="form-control" name="Departamento" ng-model="UpdatedTeacherId" type="text" placeholder="TeacherId" />
+                                <input class="form-control" name="TeacherId" ng-model="UpdatedTeacherId" type="text" placeholder="TeacherId" />
                             </div>
                         </form>
                     </div>
-                    <div class="modal-footer">
-                        <button id="btnSave" type="button" class="btn btn-primary" id="btnUpdate" data-dismiss="modal" ng-click="updateCourse()">
+                    <div class="modal-footer" style="border: none;">
+                        <button type="button" class="btn btn-primary" id="btnSave" data-dismiss="modal" ng-click="updateCourse()">
                             Update
                         </button>
-                        <button id="btnSave" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" id="btnSave" class="btn btn-default" data-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>
         </div>
 
         @*DELETE COURSE*@
-        <div class="modal" role="dialog" id="ExcluirFuncionario">
+        <div class="modal" role="dialog" id="ExcluirFuncionario" style="padding-top: 13em;">
             <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h3 class="text-info">Você tem certeza que deseja excluir o Curso?</h3>
+                <div class="modal-content" style="background: #0d1117;">
+                    <div class="modal-header" style="border: none; margin-top: 3em;">
+                        <h4 class="text-info" style="color: white; text-align: center;">Are you sure you want to delete this course?</h4>
                     </div>
                     <div class="modal-body">
-                        <div>
-                            <p>Course's id: {{UpdatedCourseId}}</p>
-                            <p>Course's Name: {{UpdatedName}}</p>
+                        <div style="color: white; text-align: center;">
+                            <p>ID: {{UpdatedCourseId}}</p>
+                            <p>Course's name: {{UpdatedName}}</p>
                         </div>
                     </div>
                     <div class="modal-footer" style="border: none;">

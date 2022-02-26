@@ -28,13 +28,47 @@
         addInfos.then(function (d) {
             if (d.data.success === true) {
                 loadSubjects();
-                alert("Subject added succesfuly!");
+                Swal.fire({
+                    title: 'Subject successfully added',
+                    width: 400,
+                    height: 30,
+                    icon: 'success',
+                    position: 'top-end',
+                    padding: '3em',
+                    color: '#fff',
+                    background: '#0d1117',
+                    showConfirmButton: false,
+                    timer: 900
+                })
 
                 $scope.clearData();
-            } else { alert("Subject wasn't added!"); }
+            } else {
+                Swal.fire({
+                    title: 'Error subject',
+                    width: 400,
+                    height: 30,
+                    icon: 'error',
+                    position: 'top-end',
+                    padding: '3em',
+                    color: '#fff',
+                    background: '#0d1117',
+                    showConfirmButton: false,
+                    timer: 900
+                }) }
         },
             function () {
-                alert("Ocorreu um erro ao tentar adicionar um Novo Subject!");
+                Swal.fire({
+                    title: 'Error ading subject',
+                    width: 400,
+                    height: 30,
+                    icon: 'error',
+                    position: 'top-end',
+                    padding: '3em',
+                    color: '#fff',
+                    background: '#0d1117',
+                    showConfirmButton: false,
+                    timer: 900
+                })
             });
     }
 
@@ -60,15 +94,48 @@
         refreshInfos.then(function (d) {
             if (d.data.success === true) {
                 loadSubjects();
-                alert("Subject updated successfuly!");
+                Swal.fire({
+                    title: 'Subject successfully updated',
+                    width: 400,
+                    height: 30,
+                    icon: 'success',
+                    position: 'top-end',
+                    padding: '3em',
+                    color: '#fff',
+                    background: '#0d1117',
+                    showConfirmButton: false,
+                    timer: 900
+                })
                 $scope.clearUpdatedData();
             }
             else {
-                alert("Subject não Atualizado");
+                Swal.fire({
+                    title: 'Error updating subject',
+                    width: 400,
+                    height: 30,
+                    icon: 'error',
+                    position: 'top-end',
+                    padding: '3em',
+                    color: '#fff',
+                    background: '#0d1117',
+                    showConfirmButton: false,
+                    timer: 900
+                })
             }
         },
             function () {
-                alert("Ocorreu um erro ao tentar atualizar o Funcionário!");
+                Swal.fire({
+                    title: 'Error updating subject',
+                    width: 400,
+                    height: 30,
+                    icon: 'error',
+                    position: 'top-end',
+                    padding: '3em',
+                    color: '#fff',
+                    background: '#0d1117',
+                    showConfirmButton: false,
+                    timer: 900
+                })
             });
     }
 
@@ -91,10 +158,32 @@
             if (d.data.success === true) {
                 loadSubjects();
 
-                alert("Subject deleted successfuly!");
+                Swal.fire({
+                    title: 'Subject successfully deleted',
+                    width: 400,
+                    height: 30,
+                    icon: 'success',
+                    position: 'top-end',
+                    padding: '3em',
+                    color: '#fff',
+                    background: '#0d1117',
+                    showConfirmButton: false,
+                    timer: 900
+                })
             }
             else {
-                alert("Subject não excluído!");
+                Swal.fire({
+                    title: 'Error deleting jubject',
+                    width: 400,
+                    height: 30,
+                    icon: 'error',
+                    position: 'top-end',
+                    padding: '3em',
+                    color: '#fff',
+                    background: '#0d1117',
+                    showConfirmButton: false,
+                    timer: 900
+                })
             }
         });
     }

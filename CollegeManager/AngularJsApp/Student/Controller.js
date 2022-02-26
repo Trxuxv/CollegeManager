@@ -30,13 +30,48 @@
         addInfos.then(function (d) {
             if (d.data.success === true) {
                 loadStudents();
-                alert("Student added succesfuly!");
+                Swal.fire({
+                    title: 'Student successfully added',
+                    width: 400,
+                    height: 30,
+                    icon: 'success',
+                    position: 'top-end',
+                    padding: '3em',
+                    color: '#fff',
+                    background: '#0d1117',
+                    showConfirmButton: false,
+                    timer: 900
+                })
 
                 $scope.clearData();
-            } else { alert("Student wasn't added!"); }
+            } else {
+                Swal.fire({
+                    title: 'Failed',
+                    width: 400,
+                    height: 30,
+                    icon: 'error',
+                    position: 'top-end',
+                    padding: '3em',
+                    color: '#fff',
+                    background: '#0d1117',
+                    showConfirmButton: false,
+                    timer: 900
+                })
+            }
         },
             function () {
-                alert("Ocorreu um erro ao tentar adicionar um Novo Funcionário!");
+                Swal.fire({
+                    title: 'Error adding student',
+                    width: 400,
+                    height: 30,
+                    icon: 'error',
+                    position: 'top-end',
+                    padding: '3em',
+                    color: '#fff',
+                    background: '#0d1117',
+                    showConfirmButton: false,
+                    timer: 900
+                })
             });
     }
 
@@ -50,7 +85,7 @@
 
     $scope.updateStudentById = function (student) {
         $scope.UpdatedStudentId = student.StudentId,
-        $scope.UpdatedName = student.Name;
+            $scope.UpdatedName = student.Name;
         $scope.UpdatedBirthday = student.Birthday;
         $scope.UpdatedCourseId = student.CourseId;
         $scope.UpdatedRgNumber = student.RgNumber;
@@ -68,15 +103,48 @@
         refreshInfos.then(function (d) {
             if (d.data.success === true) {
                 loadStudents();
-                alert("Student updated successfuly!");
+                Swal.fire({
+                    title: 'Student successfully updated',
+                    width: 400,
+                    height: 30,
+                    icon: 'success',
+                    position: 'top-end',
+                    padding: '3em',
+                    color: '#fff',
+                    background: '#0d1117',
+                    showConfirmButton: false,
+                    timer: 900
+                })
                 $scope.clearUpdatedData();
             }
             else {
-                alert("Funcionário não Atualizado");
+                Swal.fire({
+                    title: 'Error',
+                    width: 400,
+                    height: 30,
+                    icon: 'error',
+                    position: 'top-end',
+                    padding: '3em',
+                    color: '#fff',
+                    background: '#0d1117',
+                    showConfirmButton: false,
+                    timer: 900
+                })
             }
         },
             function () {
-                alert("Ocorreu um erro ao tentar atualizar o Funcionário!");
+                Swal.fire({
+                    title: 'Error updating student',
+                    width: 400,
+                    height: 30,
+                    icon: 'error',
+                    position: 'top-end',
+                    padding: '3em',
+                    color: '#fff',
+                    background: '#0d1117',
+                    showConfirmButton: false,
+                    timer: 900
+                })
             });
     }
 
@@ -101,10 +169,32 @@
             if (d.data.success === true) {
                 loadStudents();
 
-                alert("Funcionário excluído com Sucesso!");
+                Swal.fire({
+                    title: 'Student successfully deleted',
+                    width: 400,
+                    height: 30,
+                    icon: 'success',
+                    position: 'top-end',
+                    padding: '3em',
+                    color: '#fff',
+                    background: '#0d1117',
+                    showConfirmButton: false,
+                    timer: 900
+                })
             }
             else {
-                alert("Funcionário não excluído!");
+                Swal.fire({
+                    title: 'Error deleting student',
+                    width: 400,
+                    height: 30,
+                    icon: 'error',
+                    position: 'top-end',
+                    padding: '3em',
+                    color: '#fff',
+                    background: '#0d1117',
+                    showConfirmButton: false,
+                    timer: 900
+                })
             }
         });
     }

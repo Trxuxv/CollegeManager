@@ -9,7 +9,18 @@
             $scope.Courses = d.data;
         },
             function () {
-                alert("Ocorreu um erro ao tentar listar todos os curs!");
+                Swal.fire({
+                    title: 'Failed',
+                    width: 400,
+                    height: 30,
+                    icon: 'error',
+                    position: 'top-end',
+                    padding: '3em',
+                    color: '#fff',
+                    background: '#0d1117',
+                    showConfirmButton: false,
+                    timer: 900
+                })
             });
     }
 
@@ -28,13 +39,47 @@
         adicionarInfos.then(function (d) {
             if (d.data.success === true) {
                 loadCourses();
-                alert("Funcionário Adicionado com Sucesso!");
+                Swal.fire({
+                    title: 'Course successfully added',
+                    width: 400,
+                    height: 30,
+                    icon: 'success',
+                    position: 'top-end',
+                    padding: '3em',
+                    color: '#fff',
+                    background: '#0d1117',
+                    showConfirmButton: false,
+                    timer: 900
+                })
 
-                $scope.limparDados();
-            } else { alert("Funcionário não Adicionado!"); }
+                $scope.clearData();
+            } else {
+                Swal.fire({
+                    title: 'Failed',
+                    width: 400,
+                    height: 30,
+                    icon: 'error',
+                    position: 'top-end',
+                    padding: '3em',
+                    color: '#fff',
+                    background: '#0d1117',
+                    showConfirmButton: false,
+                    timer: 900
+                }) }
         },
             function () {
-                alert("Ocorreu um erro ao tentar adicionar um Novo Funcionário!");
+                Swal.fire({
+                    title: 'Error adding course',
+                    width: 400,
+                    height: 30,
+                    icon: 'error',
+                    position: 'top-end',
+                    padding: '3em',
+                    color: '#fff',
+                    background: '#0d1117',
+                    showConfirmButton: false,
+                    timer: 900
+                })
             });
     }
 
@@ -48,7 +93,7 @@
 
     $scope.updateCourseById = function (course) {
         $scope.UpdatedCourseId = course.CourseId,
-        $scope.UpdatedName = course.Name;
+            $scope.UpdatedName = course.Name;
         $scope.UpdatedDuration = course.Duration;
         $scope.UpdatedCategory = course.Category;
         $scope.UpdatedTeacherId = course.TeacherId;
@@ -66,15 +111,37 @@
         refreshInfos.then(function (d) {
             if (d.data.success === true) {
                 loadCourses();
-                alert("Student updated successfuly!");
+                Swal.fire({
+                    title: 'Course successfully updated',
+                    width: 400,
+                    height: 30,
+                    icon: 'success',
+                    position: 'top-end',
+                    padding: '3em',
+                    color: '#fff',
+                    background: '#0d1117',
+                    showConfirmButton: false,
+                    timer: 900
+                })
                 $scope.clearUpdatedData();
             }
             else {
-                alert("Funcionário não Atualizado");
+                alert("Course not updated");
             }
         },
             function () {
-                alert("Ocorreu um erro ao tentar atualizar o Funcionário!");
+                Swal.fire({
+                    title: 'Error updating course',
+                    width: 400,
+                    height: 30,
+                    icon: 'error',
+                    position: 'top-end',
+                    padding: '3em',
+                    color: '#fff',
+                    background: '#0d1117',
+                    showConfirmButton: false,
+                    timer: 900
+                })
             });
     }
 
@@ -99,10 +166,32 @@
             if (d.data.success === true) {
                 loadCourses();
 
-                alert("Funcionário excluído com Sucesso!");
+                Swal.fire({
+                    title: 'Course successfully deleted',
+                    width: 400,
+                    height: 30,
+                    icon: 'success',
+                    position: 'top-end',
+                    padding: '3em',
+                    color: '#fff',
+                    background: '#0d1117',
+                    showConfirmButton: false,
+                    timer: 900
+                })
             }
             else {
-                alert("Funcionário não excluído!");
+                Swal.fire({
+                    title: 'Error deleting course',
+                    width: 400,
+                    height: 30,
+                    icon: 'error',
+                    position: 'top-end',
+                    padding: '3em',
+                    color: '#fff',
+                    background: '#0d1117',
+                    showConfirmButton: false,
+                    timer: 900
+                })
             }
         });
     }
