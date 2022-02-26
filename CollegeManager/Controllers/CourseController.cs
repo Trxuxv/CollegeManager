@@ -17,6 +17,9 @@ namespace CollegeManager.Controllers
         {
             using (var db = new Database())
             {
+                var teachers = db.Teachers.ToList();
+                var studens = db.Students.ToList();
+
                 var listCourses = db.Courses.Select(x => new CourseModel
                 {
                     CourseId = x.CourseId,
@@ -24,7 +27,8 @@ namespace CollegeManager.Controllers
                     Category = x.Category,
                     Duration = x.Duration,
                     TeacherId = x.TeacherId,
-                    TeacherName = x.Teacher.Name
+                    TeacherName = x.Teacher.Name,
+                    StudentsCount = x.Students.Count()
                 }).ToList();
 
                 return Json(listCourses, JsonRequestBehavior.AllowGet);

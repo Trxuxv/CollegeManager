@@ -8,5 +8,7 @@
         public string Category { get; set; }
         public string TeacherName { get; set; }
         public int TeacherId { get; set; }
+        public int TeachersCount { get; set; }
+        public int StudentsCount { get; set; }
     }
 }
