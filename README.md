@@ -7,7 +7,6 @@ This is a system test of management of colleges.
 :)
 
 
-
 Technologies used:
 
 🟥AngularJS 
@@ -23,11 +22,7 @@ Technologies used:
 
 ︵‿︵‿︵‿︵‿︵‿︵‿︵‿︵‿︵‿︵‿︵‿︵    Guide    ︵‿︵‿︵‿︵‿︵‿︵‿︵‿︵‿︵‿︵‿︵‿︵   <br>
 <br>
-➪ To run the project be sure that your package: Microsoft.CodeDom.Providers.DotNetCompilerPlatform is uppdated.
-<br> <br>
-➪ After this, you'll have to configure the Database. <br><br>
-➪ In the project, select the "Sql_Scripts" folder (Make sure the 'Show all files' option in the Solution menu is enabled).<br><br>
-➪ Run the script to create the tables <br>
+➪ Look above for the document called <b>College_Manager_Config.pdf</b>, you'll be able to perfectly run the project.
 
 
 Coded by Débora Ferreira<b>@2022<b>
